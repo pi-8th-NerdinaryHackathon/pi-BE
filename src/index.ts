@@ -9,6 +9,7 @@ import { helloRouter } from "./controllers/hello.controller";
 import { DetectController } from "./controllers/detect.controller";
 import { productRouter } from "./controllers/product.controller";
 import { userRouter } from "./controllers/user.controller";
+import { ChatbotController } from "./controllers/chatbot.controller";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ const specs = swaggerJsdoc({
 });
 
 const detectController = new DetectController();
+const chatbotController = new ChatbotController();
 
 app.use(cors());
 app.use(express.json());
@@ -34,6 +36,7 @@ app.use("/hello", helloRouter);
 app.use("/api/search", detectController.router);
 app.use("/api/products", productRouter);
 app.use("/api/user", userRouter);
+app.use("/api", chatbotController.router);
 
 // ✅ 에러 핸들링
 app.use(errorMiddleware);
