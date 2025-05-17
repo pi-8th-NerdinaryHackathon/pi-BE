@@ -33,10 +33,10 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 // ✅ API 라우트
 app.use("/hello", helloRouter);
-//app.use("/api/search", detectController.router);
+app.use("/api/search", detectController.router);
 app.use("/api/products", productRouter);
 app.use("/api/user", userRouter);
-//app.use("/api", chatbotController.router);
+app.use("/api", chatbotController.router);
 
 // ✅ 에러 핸들링
 app.use(errorMiddleware);
