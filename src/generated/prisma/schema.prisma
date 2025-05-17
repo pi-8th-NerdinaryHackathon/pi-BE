@@ -13,3 +13,62 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Company {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(100)
+  number     String    @db.VarChar(100)
+  address    String    @db.VarChar(100)
+  adressSpec String    @db.VarChar(100)
+  detail     String    @db.Text
+  products   Product[]
+
+  @@map("company")
+}
+
+model Product {
+  id               Int               @id @default(autoincrement())
+  name             String            @db.VarChar(100)
+  detail           String            @db.Text
+  image            String            @db.VarChar(100)
+  price            Int?
+  company          Company           @relation(fields: [companyId], references: [id])
+  companyId        Int
+  category         Category          @relation(fields: [categoryId], references: [id])
+  categoryId       Int
+  ProductMaterials ProductMaterial[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([companyId], name: "idx_company_id")
+  @@index([categoryId], name: "idx_category_id")
+  @@map("product")
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @db.VarChar(100)
+  products Product[]
+
+  @@map("category")
+}
+
+model Material {
+  id               Int               @id @default(autoincrement())
+  name             String            @db.VarChar(100)
+  ProductMaterials ProductMaterial[]
+
+  @@map("material")
+}
+
+model ProductMaterial {
+  id         Int      @id @default(autoincrement())
+  productId  Int
+  product    Product  @relation(fields: [productId], references: [id])
+  materialId Int
+  material   Material @relation(fields: [materialId], references: [id])
+
+  @@index([productId], name: "idx_product_id")
+  @@index([materialId], name: "idx_material_id")
+  @@map("product_material")
+}
