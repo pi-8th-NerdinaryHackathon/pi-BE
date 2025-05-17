@@ -61,22 +61,6 @@ userRouter.get("/wishlist", async (req: Request, res: Response) => {
  *                     type: string
  *                     format: date-time
  *                     example: 2025-05-18T01:06:28.000Z
- *       400:
- *         description: 제품이 없습니다.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   example: false
- *                 status:
- *                   type: integer
- *                   example: 400
- *                 message:
- *                   type: string
- *                   example: 제품이 없습니다.
  *       401:
  *         description: uuid가 없습니다.
  *         content:
@@ -180,22 +164,6 @@ userRouter.post("/wishlist", async (req: Request, res: Response) => {
  *                 productId:
  *                   type: integer
  *                   example: 3
- *       400:
- *         description: 제품이 없습니다.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   example: false
- *                 status:
- *                   type: integer
- *                   example: 400
- *                 message:
- *                   type: string
- *                   example: 제품이 없습니다.
  *       401:
  *         description: uuid가 없습니다.
  *         content:
@@ -300,22 +268,6 @@ userRouter.delete("/wishlist", async (req: Request, res: Response) => {
  *                 productId:
  *                   type: integer
  *                   example: 3
- *       400:
- *         description: 제품이 없습니다.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   example: false
- *                 status:
- *                   type: integer
- *                   example: 400
- *                 message:
- *                   type: string
- *                   example: 제품이 없습니다.
  *       401:
  *         description: uuid가 없습니다.
  *         content:
@@ -415,22 +367,6 @@ userRouter.post("/", async (req: Request, res: Response) => {
  *                   type: string
  *                   format: date-time
  *                   example: 2025-05-18T02:12:00.000Z
- *       400:
- *         description: 유저가 이미 존재함
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 success:
- *                   type: boolean
- *                   example: false
- *                 status:
- *                   type: integer
- *                   example: 400
- *                 message:
- *                   type: string
- *                   example: 유저가 이미 존재함
  *       401:
  *         description: uuid가 없습니다.
  *         content:

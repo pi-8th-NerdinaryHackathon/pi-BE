@@ -20,7 +20,7 @@ export const listUserWish = async (uuid: string) => {
     // product 에러
     const wish = await getWishFromUserId(user.id);
     if (!wish) {
-        throw new HttpException(400, "제품이 없습니다.");
+        return {id: null}
     }
     return responseFromWish(wish)
 };
@@ -37,7 +37,7 @@ export const addingUserWish = async (uuid: string, productId: number) => {
     // product 에러
     const userWish = await addUserWish(data);
     if (!userWish) {
-        throw new HttpException(400, "제품이 없습니다.");
+        return {id: null}
     }
     return responseFromUserWish(userWish);
 };
@@ -49,7 +49,7 @@ export const delUserWish = async (uuid: string) => {
     }
     const userWish = await getUserWishFormUserId(user.id)
     if (!userWish) {
-        throw new HttpException(400, "제품이 없습니다.");
+        return {id: null}
     }
     const wish = await deleteUserWish(userWish.id);
     return responseFromWish(wish);
@@ -58,7 +58,7 @@ export const delUserWish = async (uuid: string) => {
 export const addingUser = async (uuid: string) => {
     let user = await getUser(uuid);
     if (user) {
-        throw new HttpException(400, "유저가 이미 존재함.");
+        return responseFomeUser(user); 
     }
     const data = {
         uuid: uuid
