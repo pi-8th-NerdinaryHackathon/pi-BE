@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { sayHello } from "../services/hello.service";
+import { sayHello, sayUserId } from "../services/hello.service";
 import HttpException from "../errors/HttpException";
 
 export const helloRouter = Router();
@@ -13,3 +13,9 @@ helloRouter.get("/", async (req: Request, res: Response) => {
   const message =  await sayHello();
   res.status(200).json({ message });
 });
+
+helloRouter.get("/head", async(req:Request, res: Response) => {
+  const userId = await sayUserId(req.header("X-User-Id"));
+
+  res.status(200).json({ userId });
+})
