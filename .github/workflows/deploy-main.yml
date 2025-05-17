@@ -14,10 +14,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build locally
-        run: |
-          npm ci
-          npm run build
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npm run generate
+
+      - name: Build TypeScript
+        run: npm run build
 
       - name: Configure SSH
         run: |
@@ -37,7 +41,7 @@ jobs:
           EC2_HOST: ${{ secrets.EC2_HOST }}
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
 
-      - name: Sync files with EC2 (excluding large or unnecessary files)
+      - name: Sync files with EC2
         run: |
           ssh NerdHack 'mkdir -p /opt/app'
           rsync -avz --delete \
@@ -50,7 +54,7 @@ jobs:
         run: |
           ssh NerdHack 'cd /opt/app && npm ci --omit=dev'
 
-      - name: Setup systemd service (if not already exists)
+      - name: Setup systemd service (first-time only)
         run: |
           ssh NerdHack 'if [ ! -f /etc/systemd/system/app.service ]; then
             echo "[Unit]
@@ -68,6 +72,5 @@ jobs:
             sudo systemctl enable app
           fi'
 
-      - name: Restart service
-        run: |
-          ssh NerdHack 'sudo systemctl restart app'
+      - name: Restart systemd service
+        run: ssh NerdHack 'sudo systemctl restart app'
