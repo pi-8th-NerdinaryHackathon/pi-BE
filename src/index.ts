@@ -22,8 +22,8 @@ const specs = swaggerJsdoc({
   apis: ["./src/controllers/*.ts"],
 });
 
-//const detectController = new DetectController();
-//const chatbotController = new ChatbotController();
+const detectController = new DetectController();
+const chatbotController = new ChatbotController();
 
 app.use(cors());
 app.use(express.json());
