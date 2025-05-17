@@ -39,6 +39,11 @@ export type Material = $Result.DefaultSelection<Prisma.$MaterialPayload>
  */
 export type ProductMaterial = $Result.DefaultSelection<Prisma.$ProductMaterialPayload>
 /**
+ * Model SearchKeyword
+ * 
+ */
+export type SearchKeyword = $Result.DefaultSelection<Prisma.$SearchKeywordPayload>
+/**
  * Model User
  * 
  */
@@ -223,6 +228,16 @@ export class PrismaClient<
     * ```
     */
   get productMaterial(): Prisma.ProductMaterialDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.searchKeyword`: Exposes CRUD operations for the **SearchKeyword** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SearchKeywords
+    * const searchKeywords = await prisma.searchKeyword.findMany()
+    * ```
+    */
+  get searchKeyword(): Prisma.SearchKeywordDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -688,6 +703,7 @@ export namespace Prisma {
     Category: 'Category',
     Material: 'Material',
     ProductMaterial: 'ProductMaterial',
+    SearchKeyword: 'SearchKeyword',
     User: 'User',
     UserWish: 'UserWish'
   };
@@ -708,7 +724,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "company" | "product" | "category" | "material" | "productMaterial" | "user" | "userWish"
+      modelProps: "company" | "product" | "category" | "material" | "productMaterial" | "searchKeyword" | "user" | "userWish"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1042,6 +1058,72 @@ export namespace Prisma {
           }
         }
       }
+      SearchKeyword: {
+        payload: Prisma.$SearchKeywordPayload<ExtArgs>
+        fields: Prisma.SearchKeywordFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SearchKeywordFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SearchKeywordPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SearchKeywordFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SearchKeywordPayload>
+          }
+          findFirst: {
+            args: Prisma.SearchKeywordFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SearchKeywordPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SearchKeywordFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SearchKeywordPayload>
+          }
+          findMany: {
+            args: Prisma.SearchKeywordFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SearchKeywordPayload>[]
+          }
+          create: {
+            args: Prisma.SearchKeywordCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SearchKeywordPayload>
+          }
+          createMany: {
+            args: Prisma.SearchKeywordCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.SearchKeywordDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SearchKeywordPayload>
+          }
+          update: {
+            args: Prisma.SearchKeywordUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SearchKeywordPayload>
+          }
+          deleteMany: {
+            args: Prisma.SearchKeywordDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SearchKeywordUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SearchKeywordUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SearchKeywordPayload>
+          }
+          aggregate: {
+            args: Prisma.SearchKeywordAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSearchKeyword>
+          }
+          groupBy: {
+            args: Prisma.SearchKeywordGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SearchKeywordGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SearchKeywordCountArgs<ExtArgs>
+            result: $Utils.Optional<SearchKeywordCountAggregateOutputType> | number
+          }
+        }
+      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -1263,6 +1345,7 @@ export namespace Prisma {
     category?: CategoryOmit
     material?: MaterialOmit
     productMaterial?: ProductMaterialOmit
+    searchKeyword?: SearchKeywordOmit
     user?: UserOmit
     userWish?: UserWishOmit
   }
@@ -1462,10 +1545,12 @@ export namespace Prisma {
 
   export type MaterialCountOutputType = {
     ProductMaterials: number
+    SearchKeyword: number
   }
 
   export type MaterialCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ProductMaterials?: boolean | MaterialCountOutputTypeCountProductMaterialsArgs
+    SearchKeyword?: boolean | MaterialCountOutputTypeCountSearchKeywordArgs
   }
 
   // Custom InputTypes
@@ -1484,6 +1569,13 @@ export namespace Prisma {
    */
   export type MaterialCountOutputTypeCountProductMaterialsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductMaterialWhereInput
+  }
+
+  /**
+   * MaterialCountOutputType without action
+   */
+  export type MaterialCountOutputTypeCountSearchKeywordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SearchKeywordWhereInput
   }
 
 
@@ -4734,6 +4826,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     ProductMaterials?: boolean | Material$ProductMaterialsArgs<ExtArgs>
+    SearchKeyword?: boolean | Material$SearchKeywordArgs<ExtArgs>
     _count?: boolean | MaterialCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["material"]>
 
@@ -4747,6 +4840,7 @@ export namespace Prisma {
   export type MaterialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["material"]>
   export type MaterialInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ProductMaterials?: boolean | Material$ProductMaterialsArgs<ExtArgs>
+    SearchKeyword?: boolean | Material$SearchKeywordArgs<ExtArgs>
     _count?: boolean | MaterialCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -4754,6 +4848,7 @@ export namespace Prisma {
     name: "Material"
     objects: {
       ProductMaterials: Prisma.$ProductMaterialPayload<ExtArgs>[]
+      SearchKeyword: Prisma.$SearchKeywordPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5099,6 +5194,7 @@ export namespace Prisma {
   export interface Prisma__MaterialClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     ProductMaterials<T extends Material$ProductMaterialsArgs<ExtArgs> = {}>(args?: Subset<T, Material$ProductMaterialsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductMaterialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    SearchKeyword<T extends Material$SearchKeywordArgs<ExtArgs> = {}>(args?: Subset<T, Material$SearchKeywordArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SearchKeywordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5494,6 +5590,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProductMaterialScalarFieldEnum | ProductMaterialScalarFieldEnum[]
+  }
+
+  /**
+   * Material.SearchKeyword
+   */
+  export type Material$SearchKeywordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
+    where?: SearchKeywordWhereInput
+    orderBy?: SearchKeywordOrderByWithRelationInput | SearchKeywordOrderByWithRelationInput[]
+    cursor?: SearchKeywordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SearchKeywordScalarFieldEnum | SearchKeywordScalarFieldEnum[]
   }
 
   /**
@@ -6465,6 +6585,951 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ProductMaterialInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SearchKeyword
+   */
+
+  export type AggregateSearchKeyword = {
+    _count: SearchKeywordCountAggregateOutputType | null
+    _avg: SearchKeywordAvgAggregateOutputType | null
+    _sum: SearchKeywordSumAggregateOutputType | null
+    _min: SearchKeywordMinAggregateOutputType | null
+    _max: SearchKeywordMaxAggregateOutputType | null
+  }
+
+  export type SearchKeywordAvgAggregateOutputType = {
+    id: number | null
+    materialId: number | null
+  }
+
+  export type SearchKeywordSumAggregateOutputType = {
+    id: number | null
+    materialId: number | null
+  }
+
+  export type SearchKeywordMinAggregateOutputType = {
+    id: number | null
+    keyword: string | null
+    materialId: number | null
+  }
+
+  export type SearchKeywordMaxAggregateOutputType = {
+    id: number | null
+    keyword: string | null
+    materialId: number | null
+  }
+
+  export type SearchKeywordCountAggregateOutputType = {
+    id: number
+    keyword: number
+    materialId: number
+    _all: number
+  }
+
+
+  export type SearchKeywordAvgAggregateInputType = {
+    id?: true
+    materialId?: true
+  }
+
+  export type SearchKeywordSumAggregateInputType = {
+    id?: true
+    materialId?: true
+  }
+
+  export type SearchKeywordMinAggregateInputType = {
+    id?: true
+    keyword?: true
+    materialId?: true
+  }
+
+  export type SearchKeywordMaxAggregateInputType = {
+    id?: true
+    keyword?: true
+    materialId?: true
+  }
+
+  export type SearchKeywordCountAggregateInputType = {
+    id?: true
+    keyword?: true
+    materialId?: true
+    _all?: true
+  }
+
+  export type SearchKeywordAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SearchKeyword to aggregate.
+     */
+    where?: SearchKeywordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SearchKeywords to fetch.
+     */
+    orderBy?: SearchKeywordOrderByWithRelationInput | SearchKeywordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SearchKeywordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SearchKeywords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SearchKeywords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SearchKeywords
+    **/
+    _count?: true | SearchKeywordCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SearchKeywordAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SearchKeywordSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SearchKeywordMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SearchKeywordMaxAggregateInputType
+  }
+
+  export type GetSearchKeywordAggregateType<T extends SearchKeywordAggregateArgs> = {
+        [P in keyof T & keyof AggregateSearchKeyword]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSearchKeyword[P]>
+      : GetScalarType<T[P], AggregateSearchKeyword[P]>
+  }
+
+
+
+
+  export type SearchKeywordGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SearchKeywordWhereInput
+    orderBy?: SearchKeywordOrderByWithAggregationInput | SearchKeywordOrderByWithAggregationInput[]
+    by: SearchKeywordScalarFieldEnum[] | SearchKeywordScalarFieldEnum
+    having?: SearchKeywordScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SearchKeywordCountAggregateInputType | true
+    _avg?: SearchKeywordAvgAggregateInputType
+    _sum?: SearchKeywordSumAggregateInputType
+    _min?: SearchKeywordMinAggregateInputType
+    _max?: SearchKeywordMaxAggregateInputType
+  }
+
+  export type SearchKeywordGroupByOutputType = {
+    id: number
+    keyword: string
+    materialId: number
+    _count: SearchKeywordCountAggregateOutputType | null
+    _avg: SearchKeywordAvgAggregateOutputType | null
+    _sum: SearchKeywordSumAggregateOutputType | null
+    _min: SearchKeywordMinAggregateOutputType | null
+    _max: SearchKeywordMaxAggregateOutputType | null
+  }
+
+  type GetSearchKeywordGroupByPayload<T extends SearchKeywordGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SearchKeywordGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SearchKeywordGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SearchKeywordGroupByOutputType[P]>
+            : GetScalarType<T[P], SearchKeywordGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SearchKeywordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    keyword?: boolean
+    materialId?: boolean
+    material?: boolean | MaterialDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["searchKeyword"]>
+
+
+
+  export type SearchKeywordSelectScalar = {
+    id?: boolean
+    keyword?: boolean
+    materialId?: boolean
+  }
+
+  export type SearchKeywordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "keyword" | "materialId", ExtArgs["result"]["searchKeyword"]>
+  export type SearchKeywordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    material?: boolean | MaterialDefaultArgs<ExtArgs>
+  }
+
+  export type $SearchKeywordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SearchKeyword"
+    objects: {
+      material: Prisma.$MaterialPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      keyword: string
+      materialId: number
+    }, ExtArgs["result"]["searchKeyword"]>
+    composites: {}
+  }
+
+  type SearchKeywordGetPayload<S extends boolean | null | undefined | SearchKeywordDefaultArgs> = $Result.GetResult<Prisma.$SearchKeywordPayload, S>
+
+  type SearchKeywordCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SearchKeywordFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SearchKeywordCountAggregateInputType | true
+    }
+
+  export interface SearchKeywordDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SearchKeyword'], meta: { name: 'SearchKeyword' } }
+    /**
+     * Find zero or one SearchKeyword that matches the filter.
+     * @param {SearchKeywordFindUniqueArgs} args - Arguments to find a SearchKeyword
+     * @example
+     * // Get one SearchKeyword
+     * const searchKeyword = await prisma.searchKeyword.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SearchKeywordFindUniqueArgs>(args: SelectSubset<T, SearchKeywordFindUniqueArgs<ExtArgs>>): Prisma__SearchKeywordClient<$Result.GetResult<Prisma.$SearchKeywordPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SearchKeyword that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SearchKeywordFindUniqueOrThrowArgs} args - Arguments to find a SearchKeyword
+     * @example
+     * // Get one SearchKeyword
+     * const searchKeyword = await prisma.searchKeyword.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SearchKeywordFindUniqueOrThrowArgs>(args: SelectSubset<T, SearchKeywordFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SearchKeywordClient<$Result.GetResult<Prisma.$SearchKeywordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SearchKeyword that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SearchKeywordFindFirstArgs} args - Arguments to find a SearchKeyword
+     * @example
+     * // Get one SearchKeyword
+     * const searchKeyword = await prisma.searchKeyword.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SearchKeywordFindFirstArgs>(args?: SelectSubset<T, SearchKeywordFindFirstArgs<ExtArgs>>): Prisma__SearchKeywordClient<$Result.GetResult<Prisma.$SearchKeywordPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SearchKeyword that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SearchKeywordFindFirstOrThrowArgs} args - Arguments to find a SearchKeyword
+     * @example
+     * // Get one SearchKeyword
+     * const searchKeyword = await prisma.searchKeyword.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SearchKeywordFindFirstOrThrowArgs>(args?: SelectSubset<T, SearchKeywordFindFirstOrThrowArgs<ExtArgs>>): Prisma__SearchKeywordClient<$Result.GetResult<Prisma.$SearchKeywordPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SearchKeywords that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SearchKeywordFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SearchKeywords
+     * const searchKeywords = await prisma.searchKeyword.findMany()
+     * 
+     * // Get first 10 SearchKeywords
+     * const searchKeywords = await prisma.searchKeyword.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const searchKeywordWithIdOnly = await prisma.searchKeyword.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SearchKeywordFindManyArgs>(args?: SelectSubset<T, SearchKeywordFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SearchKeywordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SearchKeyword.
+     * @param {SearchKeywordCreateArgs} args - Arguments to create a SearchKeyword.
+     * @example
+     * // Create one SearchKeyword
+     * const SearchKeyword = await prisma.searchKeyword.create({
+     *   data: {
+     *     // ... data to create a SearchKeyword
+     *   }
+     * })
+     * 
+     */
+    create<T extends SearchKeywordCreateArgs>(args: SelectSubset<T, SearchKeywordCreateArgs<ExtArgs>>): Prisma__SearchKeywordClient<$Result.GetResult<Prisma.$SearchKeywordPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SearchKeywords.
+     * @param {SearchKeywordCreateManyArgs} args - Arguments to create many SearchKeywords.
+     * @example
+     * // Create many SearchKeywords
+     * const searchKeyword = await prisma.searchKeyword.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SearchKeywordCreateManyArgs>(args?: SelectSubset<T, SearchKeywordCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a SearchKeyword.
+     * @param {SearchKeywordDeleteArgs} args - Arguments to delete one SearchKeyword.
+     * @example
+     * // Delete one SearchKeyword
+     * const SearchKeyword = await prisma.searchKeyword.delete({
+     *   where: {
+     *     // ... filter to delete one SearchKeyword
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SearchKeywordDeleteArgs>(args: SelectSubset<T, SearchKeywordDeleteArgs<ExtArgs>>): Prisma__SearchKeywordClient<$Result.GetResult<Prisma.$SearchKeywordPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SearchKeyword.
+     * @param {SearchKeywordUpdateArgs} args - Arguments to update one SearchKeyword.
+     * @example
+     * // Update one SearchKeyword
+     * const searchKeyword = await prisma.searchKeyword.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SearchKeywordUpdateArgs>(args: SelectSubset<T, SearchKeywordUpdateArgs<ExtArgs>>): Prisma__SearchKeywordClient<$Result.GetResult<Prisma.$SearchKeywordPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SearchKeywords.
+     * @param {SearchKeywordDeleteManyArgs} args - Arguments to filter SearchKeywords to delete.
+     * @example
+     * // Delete a few SearchKeywords
+     * const { count } = await prisma.searchKeyword.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SearchKeywordDeleteManyArgs>(args?: SelectSubset<T, SearchKeywordDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SearchKeywords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SearchKeywordUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SearchKeywords
+     * const searchKeyword = await prisma.searchKeyword.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SearchKeywordUpdateManyArgs>(args: SelectSubset<T, SearchKeywordUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SearchKeyword.
+     * @param {SearchKeywordUpsertArgs} args - Arguments to update or create a SearchKeyword.
+     * @example
+     * // Update or create a SearchKeyword
+     * const searchKeyword = await prisma.searchKeyword.upsert({
+     *   create: {
+     *     // ... data to create a SearchKeyword
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SearchKeyword we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SearchKeywordUpsertArgs>(args: SelectSubset<T, SearchKeywordUpsertArgs<ExtArgs>>): Prisma__SearchKeywordClient<$Result.GetResult<Prisma.$SearchKeywordPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SearchKeywords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SearchKeywordCountArgs} args - Arguments to filter SearchKeywords to count.
+     * @example
+     * // Count the number of SearchKeywords
+     * const count = await prisma.searchKeyword.count({
+     *   where: {
+     *     // ... the filter for the SearchKeywords we want to count
+     *   }
+     * })
+    **/
+    count<T extends SearchKeywordCountArgs>(
+      args?: Subset<T, SearchKeywordCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SearchKeywordCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SearchKeyword.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SearchKeywordAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SearchKeywordAggregateArgs>(args: Subset<T, SearchKeywordAggregateArgs>): Prisma.PrismaPromise<GetSearchKeywordAggregateType<T>>
+
+    /**
+     * Group by SearchKeyword.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SearchKeywordGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SearchKeywordGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SearchKeywordGroupByArgs['orderBy'] }
+        : { orderBy?: SearchKeywordGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SearchKeywordGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSearchKeywordGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SearchKeyword model
+   */
+  readonly fields: SearchKeywordFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SearchKeyword.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SearchKeywordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    material<T extends MaterialDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MaterialDefaultArgs<ExtArgs>>): Prisma__MaterialClient<$Result.GetResult<Prisma.$MaterialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SearchKeyword model
+   */
+  interface SearchKeywordFieldRefs {
+    readonly id: FieldRef<"SearchKeyword", 'Int'>
+    readonly keyword: FieldRef<"SearchKeyword", 'String'>
+    readonly materialId: FieldRef<"SearchKeyword", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SearchKeyword findUnique
+   */
+  export type SearchKeywordFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
+    /**
+     * Filter, which SearchKeyword to fetch.
+     */
+    where: SearchKeywordWhereUniqueInput
+  }
+
+  /**
+   * SearchKeyword findUniqueOrThrow
+   */
+  export type SearchKeywordFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
+    /**
+     * Filter, which SearchKeyword to fetch.
+     */
+    where: SearchKeywordWhereUniqueInput
+  }
+
+  /**
+   * SearchKeyword findFirst
+   */
+  export type SearchKeywordFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
+    /**
+     * Filter, which SearchKeyword to fetch.
+     */
+    where?: SearchKeywordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SearchKeywords to fetch.
+     */
+    orderBy?: SearchKeywordOrderByWithRelationInput | SearchKeywordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SearchKeywords.
+     */
+    cursor?: SearchKeywordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SearchKeywords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SearchKeywords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SearchKeywords.
+     */
+    distinct?: SearchKeywordScalarFieldEnum | SearchKeywordScalarFieldEnum[]
+  }
+
+  /**
+   * SearchKeyword findFirstOrThrow
+   */
+  export type SearchKeywordFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
+    /**
+     * Filter, which SearchKeyword to fetch.
+     */
+    where?: SearchKeywordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SearchKeywords to fetch.
+     */
+    orderBy?: SearchKeywordOrderByWithRelationInput | SearchKeywordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SearchKeywords.
+     */
+    cursor?: SearchKeywordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SearchKeywords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SearchKeywords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SearchKeywords.
+     */
+    distinct?: SearchKeywordScalarFieldEnum | SearchKeywordScalarFieldEnum[]
+  }
+
+  /**
+   * SearchKeyword findMany
+   */
+  export type SearchKeywordFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
+    /**
+     * Filter, which SearchKeywords to fetch.
+     */
+    where?: SearchKeywordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SearchKeywords to fetch.
+     */
+    orderBy?: SearchKeywordOrderByWithRelationInput | SearchKeywordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SearchKeywords.
+     */
+    cursor?: SearchKeywordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SearchKeywords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SearchKeywords.
+     */
+    skip?: number
+    distinct?: SearchKeywordScalarFieldEnum | SearchKeywordScalarFieldEnum[]
+  }
+
+  /**
+   * SearchKeyword create
+   */
+  export type SearchKeywordCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SearchKeyword.
+     */
+    data: XOR<SearchKeywordCreateInput, SearchKeywordUncheckedCreateInput>
+  }
+
+  /**
+   * SearchKeyword createMany
+   */
+  export type SearchKeywordCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SearchKeywords.
+     */
+    data: SearchKeywordCreateManyInput | SearchKeywordCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SearchKeyword update
+   */
+  export type SearchKeywordUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SearchKeyword.
+     */
+    data: XOR<SearchKeywordUpdateInput, SearchKeywordUncheckedUpdateInput>
+    /**
+     * Choose, which SearchKeyword to update.
+     */
+    where: SearchKeywordWhereUniqueInput
+  }
+
+  /**
+   * SearchKeyword updateMany
+   */
+  export type SearchKeywordUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SearchKeywords.
+     */
+    data: XOR<SearchKeywordUpdateManyMutationInput, SearchKeywordUncheckedUpdateManyInput>
+    /**
+     * Filter which SearchKeywords to update
+     */
+    where?: SearchKeywordWhereInput
+    /**
+     * Limit how many SearchKeywords to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SearchKeyword upsert
+   */
+  export type SearchKeywordUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SearchKeyword to update in case it exists.
+     */
+    where: SearchKeywordWhereUniqueInput
+    /**
+     * In case the SearchKeyword found by the `where` argument doesn't exist, create a new SearchKeyword with this data.
+     */
+    create: XOR<SearchKeywordCreateInput, SearchKeywordUncheckedCreateInput>
+    /**
+     * In case the SearchKeyword was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SearchKeywordUpdateInput, SearchKeywordUncheckedUpdateInput>
+  }
+
+  /**
+   * SearchKeyword delete
+   */
+  export type SearchKeywordDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
+    /**
+     * Filter which SearchKeyword to delete.
+     */
+    where: SearchKeywordWhereUniqueInput
+  }
+
+  /**
+   * SearchKeyword deleteMany
+   */
+  export type SearchKeywordDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SearchKeywords to delete
+     */
+    where?: SearchKeywordWhereInput
+    /**
+     * Limit how many SearchKeywords to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SearchKeyword without action
+   */
+  export type SearchKeywordDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SearchKeyword
+     */
+    select?: SearchKeywordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SearchKeyword
+     */
+    omit?: SearchKeywordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SearchKeywordInclude<ExtArgs> | null
   }
 
 
@@ -8432,6 +9497,15 @@ export namespace Prisma {
   export type ProductMaterialScalarFieldEnum = (typeof ProductMaterialScalarFieldEnum)[keyof typeof ProductMaterialScalarFieldEnum]
 
 
+  export const SearchKeywordScalarFieldEnum: {
+    id: 'id',
+    keyword: 'keyword',
+    materialId: 'materialId'
+  };
+
+  export type SearchKeywordScalarFieldEnum = (typeof SearchKeywordScalarFieldEnum)[keyof typeof SearchKeywordScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id'
   };
@@ -8496,6 +9570,13 @@ export namespace Prisma {
   };
 
   export type MaterialOrderByRelevanceFieldEnum = (typeof MaterialOrderByRelevanceFieldEnum)[keyof typeof MaterialOrderByRelevanceFieldEnum]
+
+
+  export const SearchKeywordOrderByRelevanceFieldEnum: {
+    keyword: 'keyword'
+  };
+
+  export type SearchKeywordOrderByRelevanceFieldEnum = (typeof SearchKeywordOrderByRelevanceFieldEnum)[keyof typeof SearchKeywordOrderByRelevanceFieldEnum]
 
 
   /**
@@ -8734,12 +9815,14 @@ export namespace Prisma {
     id?: IntFilter<"Material"> | number
     name?: StringFilter<"Material"> | string
     ProductMaterials?: ProductMaterialListRelationFilter
+    SearchKeyword?: SearchKeywordListRelationFilter
   }
 
   export type MaterialOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     ProductMaterials?: ProductMaterialOrderByRelationAggregateInput
+    SearchKeyword?: SearchKeywordOrderByRelationAggregateInput
     _relevance?: MaterialOrderByRelevanceInput
   }
 
@@ -8750,6 +9833,7 @@ export namespace Prisma {
     NOT?: MaterialWhereInput | MaterialWhereInput[]
     name?: StringFilter<"Material"> | string
     ProductMaterials?: ProductMaterialListRelationFilter
+    SearchKeyword?: SearchKeywordListRelationFilter
   }, "id">
 
   export type MaterialOrderByWithAggregationInput = {
@@ -8818,6 +9902,54 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"ProductMaterial"> | number
     productId?: IntWithAggregatesFilter<"ProductMaterial"> | number
     materialId?: IntWithAggregatesFilter<"ProductMaterial"> | number
+  }
+
+  export type SearchKeywordWhereInput = {
+    AND?: SearchKeywordWhereInput | SearchKeywordWhereInput[]
+    OR?: SearchKeywordWhereInput[]
+    NOT?: SearchKeywordWhereInput | SearchKeywordWhereInput[]
+    id?: IntFilter<"SearchKeyword"> | number
+    keyword?: StringFilter<"SearchKeyword"> | string
+    materialId?: IntFilter<"SearchKeyword"> | number
+    material?: XOR<MaterialScalarRelationFilter, MaterialWhereInput>
+  }
+
+  export type SearchKeywordOrderByWithRelationInput = {
+    id?: SortOrder
+    keyword?: SortOrder
+    materialId?: SortOrder
+    material?: MaterialOrderByWithRelationInput
+    _relevance?: SearchKeywordOrderByRelevanceInput
+  }
+
+  export type SearchKeywordWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: SearchKeywordWhereInput | SearchKeywordWhereInput[]
+    OR?: SearchKeywordWhereInput[]
+    NOT?: SearchKeywordWhereInput | SearchKeywordWhereInput[]
+    keyword?: StringFilter<"SearchKeyword"> | string
+    materialId?: IntFilter<"SearchKeyword"> | number
+    material?: XOR<MaterialScalarRelationFilter, MaterialWhereInput>
+  }, "id">
+
+  export type SearchKeywordOrderByWithAggregationInput = {
+    id?: SortOrder
+    keyword?: SortOrder
+    materialId?: SortOrder
+    _count?: SearchKeywordCountOrderByAggregateInput
+    _avg?: SearchKeywordAvgOrderByAggregateInput
+    _max?: SearchKeywordMaxOrderByAggregateInput
+    _min?: SearchKeywordMinOrderByAggregateInput
+    _sum?: SearchKeywordSumOrderByAggregateInput
+  }
+
+  export type SearchKeywordScalarWhereWithAggregatesInput = {
+    AND?: SearchKeywordScalarWhereWithAggregatesInput | SearchKeywordScalarWhereWithAggregatesInput[]
+    OR?: SearchKeywordScalarWhereWithAggregatesInput[]
+    NOT?: SearchKeywordScalarWhereWithAggregatesInput | SearchKeywordScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"SearchKeyword"> | number
+    keyword?: StringWithAggregatesFilter<"SearchKeyword"> | string
+    materialId?: IntWithAggregatesFilter<"SearchKeyword"> | number
   }
 
   export type UserWhereInput = {
@@ -9097,23 +10229,27 @@ export namespace Prisma {
   export type MaterialCreateInput = {
     name: string
     ProductMaterials?: ProductMaterialCreateNestedManyWithoutMaterialInput
+    SearchKeyword?: SearchKeywordCreateNestedManyWithoutMaterialInput
   }
 
   export type MaterialUncheckedCreateInput = {
     id?: number
     name: string
     ProductMaterials?: ProductMaterialUncheckedCreateNestedManyWithoutMaterialInput
+    SearchKeyword?: SearchKeywordUncheckedCreateNestedManyWithoutMaterialInput
   }
 
   export type MaterialUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     ProductMaterials?: ProductMaterialUpdateManyWithoutMaterialNestedInput
+    SearchKeyword?: SearchKeywordUpdateManyWithoutMaterialNestedInput
   }
 
   export type MaterialUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     ProductMaterials?: ProductMaterialUncheckedUpdateManyWithoutMaterialNestedInput
+    SearchKeyword?: SearchKeywordUncheckedUpdateManyWithoutMaterialNestedInput
   }
 
   export type MaterialCreateManyInput = {
@@ -9165,6 +10301,44 @@ export namespace Prisma {
   export type ProductMaterialUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
+    materialId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SearchKeywordCreateInput = {
+    keyword: string
+    material: MaterialCreateNestedOneWithoutSearchKeywordInput
+  }
+
+  export type SearchKeywordUncheckedCreateInput = {
+    id?: number
+    keyword: string
+    materialId: number
+  }
+
+  export type SearchKeywordUpdateInput = {
+    keyword?: StringFieldUpdateOperationsInput | string
+    material?: MaterialUpdateOneRequiredWithoutSearchKeywordNestedInput
+  }
+
+  export type SearchKeywordUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    keyword?: StringFieldUpdateOperationsInput | string
+    materialId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SearchKeywordCreateManyInput = {
+    id?: number
+    keyword: string
+    materialId: number
+  }
+
+  export type SearchKeywordUpdateManyMutationInput = {
+    keyword?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SearchKeywordUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    keyword?: StringFieldUpdateOperationsInput | string
     materialId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -9519,6 +10693,16 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type SearchKeywordListRelationFilter = {
+    every?: SearchKeywordWhereInput
+    some?: SearchKeywordWhereInput
+    none?: SearchKeywordWhereInput
+  }
+
+  export type SearchKeywordOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type MaterialOrderByRelevanceInput = {
     fields: MaterialOrderByRelevanceFieldEnum | MaterialOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -9585,6 +10769,40 @@ export namespace Prisma {
   export type ProductMaterialSumOrderByAggregateInput = {
     id?: SortOrder
     productId?: SortOrder
+    materialId?: SortOrder
+  }
+
+  export type SearchKeywordOrderByRelevanceInput = {
+    fields: SearchKeywordOrderByRelevanceFieldEnum | SearchKeywordOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type SearchKeywordCountOrderByAggregateInput = {
+    id?: SortOrder
+    keyword?: SortOrder
+    materialId?: SortOrder
+  }
+
+  export type SearchKeywordAvgOrderByAggregateInput = {
+    id?: SortOrder
+    materialId?: SortOrder
+  }
+
+  export type SearchKeywordMaxOrderByAggregateInput = {
+    id?: SortOrder
+    keyword?: SortOrder
+    materialId?: SortOrder
+  }
+
+  export type SearchKeywordMinOrderByAggregateInput = {
+    id?: SortOrder
+    keyword?: SortOrder
+    materialId?: SortOrder
+  }
+
+  export type SearchKeywordSumOrderByAggregateInput = {
+    id?: SortOrder
     materialId?: SortOrder
   }
 
@@ -9870,11 +11088,25 @@ export namespace Prisma {
     connect?: ProductMaterialWhereUniqueInput | ProductMaterialWhereUniqueInput[]
   }
 
+  export type SearchKeywordCreateNestedManyWithoutMaterialInput = {
+    create?: XOR<SearchKeywordCreateWithoutMaterialInput, SearchKeywordUncheckedCreateWithoutMaterialInput> | SearchKeywordCreateWithoutMaterialInput[] | SearchKeywordUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: SearchKeywordCreateOrConnectWithoutMaterialInput | SearchKeywordCreateOrConnectWithoutMaterialInput[]
+    createMany?: SearchKeywordCreateManyMaterialInputEnvelope
+    connect?: SearchKeywordWhereUniqueInput | SearchKeywordWhereUniqueInput[]
+  }
+
   export type ProductMaterialUncheckedCreateNestedManyWithoutMaterialInput = {
     create?: XOR<ProductMaterialCreateWithoutMaterialInput, ProductMaterialUncheckedCreateWithoutMaterialInput> | ProductMaterialCreateWithoutMaterialInput[] | ProductMaterialUncheckedCreateWithoutMaterialInput[]
     connectOrCreate?: ProductMaterialCreateOrConnectWithoutMaterialInput | ProductMaterialCreateOrConnectWithoutMaterialInput[]
     createMany?: ProductMaterialCreateManyMaterialInputEnvelope
     connect?: ProductMaterialWhereUniqueInput | ProductMaterialWhereUniqueInput[]
+  }
+
+  export type SearchKeywordUncheckedCreateNestedManyWithoutMaterialInput = {
+    create?: XOR<SearchKeywordCreateWithoutMaterialInput, SearchKeywordUncheckedCreateWithoutMaterialInput> | SearchKeywordCreateWithoutMaterialInput[] | SearchKeywordUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: SearchKeywordCreateOrConnectWithoutMaterialInput | SearchKeywordCreateOrConnectWithoutMaterialInput[]
+    createMany?: SearchKeywordCreateManyMaterialInputEnvelope
+    connect?: SearchKeywordWhereUniqueInput | SearchKeywordWhereUniqueInput[]
   }
 
   export type ProductMaterialUpdateManyWithoutMaterialNestedInput = {
@@ -9891,6 +11123,20 @@ export namespace Prisma {
     deleteMany?: ProductMaterialScalarWhereInput | ProductMaterialScalarWhereInput[]
   }
 
+  export type SearchKeywordUpdateManyWithoutMaterialNestedInput = {
+    create?: XOR<SearchKeywordCreateWithoutMaterialInput, SearchKeywordUncheckedCreateWithoutMaterialInput> | SearchKeywordCreateWithoutMaterialInput[] | SearchKeywordUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: SearchKeywordCreateOrConnectWithoutMaterialInput | SearchKeywordCreateOrConnectWithoutMaterialInput[]
+    upsert?: SearchKeywordUpsertWithWhereUniqueWithoutMaterialInput | SearchKeywordUpsertWithWhereUniqueWithoutMaterialInput[]
+    createMany?: SearchKeywordCreateManyMaterialInputEnvelope
+    set?: SearchKeywordWhereUniqueInput | SearchKeywordWhereUniqueInput[]
+    disconnect?: SearchKeywordWhereUniqueInput | SearchKeywordWhereUniqueInput[]
+    delete?: SearchKeywordWhereUniqueInput | SearchKeywordWhereUniqueInput[]
+    connect?: SearchKeywordWhereUniqueInput | SearchKeywordWhereUniqueInput[]
+    update?: SearchKeywordUpdateWithWhereUniqueWithoutMaterialInput | SearchKeywordUpdateWithWhereUniqueWithoutMaterialInput[]
+    updateMany?: SearchKeywordUpdateManyWithWhereWithoutMaterialInput | SearchKeywordUpdateManyWithWhereWithoutMaterialInput[]
+    deleteMany?: SearchKeywordScalarWhereInput | SearchKeywordScalarWhereInput[]
+  }
+
   export type ProductMaterialUncheckedUpdateManyWithoutMaterialNestedInput = {
     create?: XOR<ProductMaterialCreateWithoutMaterialInput, ProductMaterialUncheckedCreateWithoutMaterialInput> | ProductMaterialCreateWithoutMaterialInput[] | ProductMaterialUncheckedCreateWithoutMaterialInput[]
     connectOrCreate?: ProductMaterialCreateOrConnectWithoutMaterialInput | ProductMaterialCreateOrConnectWithoutMaterialInput[]
@@ -9903,6 +11149,20 @@ export namespace Prisma {
     update?: ProductMaterialUpdateWithWhereUniqueWithoutMaterialInput | ProductMaterialUpdateWithWhereUniqueWithoutMaterialInput[]
     updateMany?: ProductMaterialUpdateManyWithWhereWithoutMaterialInput | ProductMaterialUpdateManyWithWhereWithoutMaterialInput[]
     deleteMany?: ProductMaterialScalarWhereInput | ProductMaterialScalarWhereInput[]
+  }
+
+  export type SearchKeywordUncheckedUpdateManyWithoutMaterialNestedInput = {
+    create?: XOR<SearchKeywordCreateWithoutMaterialInput, SearchKeywordUncheckedCreateWithoutMaterialInput> | SearchKeywordCreateWithoutMaterialInput[] | SearchKeywordUncheckedCreateWithoutMaterialInput[]
+    connectOrCreate?: SearchKeywordCreateOrConnectWithoutMaterialInput | SearchKeywordCreateOrConnectWithoutMaterialInput[]
+    upsert?: SearchKeywordUpsertWithWhereUniqueWithoutMaterialInput | SearchKeywordUpsertWithWhereUniqueWithoutMaterialInput[]
+    createMany?: SearchKeywordCreateManyMaterialInputEnvelope
+    set?: SearchKeywordWhereUniqueInput | SearchKeywordWhereUniqueInput[]
+    disconnect?: SearchKeywordWhereUniqueInput | SearchKeywordWhereUniqueInput[]
+    delete?: SearchKeywordWhereUniqueInput | SearchKeywordWhereUniqueInput[]
+    connect?: SearchKeywordWhereUniqueInput | SearchKeywordWhereUniqueInput[]
+    update?: SearchKeywordUpdateWithWhereUniqueWithoutMaterialInput | SearchKeywordUpdateWithWhereUniqueWithoutMaterialInput[]
+    updateMany?: SearchKeywordUpdateManyWithWhereWithoutMaterialInput | SearchKeywordUpdateManyWithWhereWithoutMaterialInput[]
+    deleteMany?: SearchKeywordScalarWhereInput | SearchKeywordScalarWhereInput[]
   }
 
   export type ProductCreateNestedOneWithoutProductMaterialsInput = {
@@ -9931,6 +11191,20 @@ export namespace Prisma {
     upsert?: MaterialUpsertWithoutProductMaterialsInput
     connect?: MaterialWhereUniqueInput
     update?: XOR<XOR<MaterialUpdateToOneWithWhereWithoutProductMaterialsInput, MaterialUpdateWithoutProductMaterialsInput>, MaterialUncheckedUpdateWithoutProductMaterialsInput>
+  }
+
+  export type MaterialCreateNestedOneWithoutSearchKeywordInput = {
+    create?: XOR<MaterialCreateWithoutSearchKeywordInput, MaterialUncheckedCreateWithoutSearchKeywordInput>
+    connectOrCreate?: MaterialCreateOrConnectWithoutSearchKeywordInput
+    connect?: MaterialWhereUniqueInput
+  }
+
+  export type MaterialUpdateOneRequiredWithoutSearchKeywordNestedInput = {
+    create?: XOR<MaterialCreateWithoutSearchKeywordInput, MaterialUncheckedCreateWithoutSearchKeywordInput>
+    connectOrCreate?: MaterialCreateOrConnectWithoutSearchKeywordInput
+    upsert?: MaterialUpsertWithoutSearchKeywordInput
+    connect?: MaterialWhereUniqueInput
+    update?: XOR<XOR<MaterialUpdateToOneWithWhereWithoutSearchKeywordInput, MaterialUpdateWithoutSearchKeywordInput>, MaterialUncheckedUpdateWithoutSearchKeywordInput>
   }
 
   export type UserWishCreateNestedManyWithoutUserInput = {
@@ -10445,6 +11719,25 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type SearchKeywordCreateWithoutMaterialInput = {
+    keyword: string
+  }
+
+  export type SearchKeywordUncheckedCreateWithoutMaterialInput = {
+    id?: number
+    keyword: string
+  }
+
+  export type SearchKeywordCreateOrConnectWithoutMaterialInput = {
+    where: SearchKeywordWhereUniqueInput
+    create: XOR<SearchKeywordCreateWithoutMaterialInput, SearchKeywordUncheckedCreateWithoutMaterialInput>
+  }
+
+  export type SearchKeywordCreateManyMaterialInputEnvelope = {
+    data: SearchKeywordCreateManyMaterialInput | SearchKeywordCreateManyMaterialInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProductMaterialUpsertWithWhereUniqueWithoutMaterialInput = {
     where: ProductMaterialWhereUniqueInput
     update: XOR<ProductMaterialUpdateWithoutMaterialInput, ProductMaterialUncheckedUpdateWithoutMaterialInput>
@@ -10459,6 +11752,31 @@ export namespace Prisma {
   export type ProductMaterialUpdateManyWithWhereWithoutMaterialInput = {
     where: ProductMaterialScalarWhereInput
     data: XOR<ProductMaterialUpdateManyMutationInput, ProductMaterialUncheckedUpdateManyWithoutMaterialInput>
+  }
+
+  export type SearchKeywordUpsertWithWhereUniqueWithoutMaterialInput = {
+    where: SearchKeywordWhereUniqueInput
+    update: XOR<SearchKeywordUpdateWithoutMaterialInput, SearchKeywordUncheckedUpdateWithoutMaterialInput>
+    create: XOR<SearchKeywordCreateWithoutMaterialInput, SearchKeywordUncheckedCreateWithoutMaterialInput>
+  }
+
+  export type SearchKeywordUpdateWithWhereUniqueWithoutMaterialInput = {
+    where: SearchKeywordWhereUniqueInput
+    data: XOR<SearchKeywordUpdateWithoutMaterialInput, SearchKeywordUncheckedUpdateWithoutMaterialInput>
+  }
+
+  export type SearchKeywordUpdateManyWithWhereWithoutMaterialInput = {
+    where: SearchKeywordScalarWhereInput
+    data: XOR<SearchKeywordUpdateManyMutationInput, SearchKeywordUncheckedUpdateManyWithoutMaterialInput>
+  }
+
+  export type SearchKeywordScalarWhereInput = {
+    AND?: SearchKeywordScalarWhereInput | SearchKeywordScalarWhereInput[]
+    OR?: SearchKeywordScalarWhereInput[]
+    NOT?: SearchKeywordScalarWhereInput | SearchKeywordScalarWhereInput[]
+    id?: IntFilter<"SearchKeyword"> | number
+    keyword?: StringFilter<"SearchKeyword"> | string
+    materialId?: IntFilter<"SearchKeyword"> | number
   }
 
   export type ProductCreateWithoutProductMaterialsInput = {
@@ -10493,11 +11811,13 @@ export namespace Prisma {
 
   export type MaterialCreateWithoutProductMaterialsInput = {
     name: string
+    SearchKeyword?: SearchKeywordCreateNestedManyWithoutMaterialInput
   }
 
   export type MaterialUncheckedCreateWithoutProductMaterialsInput = {
     id?: number
     name: string
+    SearchKeyword?: SearchKeywordUncheckedCreateNestedManyWithoutMaterialInput
   }
 
   export type MaterialCreateOrConnectWithoutProductMaterialsInput = {
@@ -10554,11 +11874,51 @@ export namespace Prisma {
 
   export type MaterialUpdateWithoutProductMaterialsInput = {
     name?: StringFieldUpdateOperationsInput | string
+    SearchKeyword?: SearchKeywordUpdateManyWithoutMaterialNestedInput
   }
 
   export type MaterialUncheckedUpdateWithoutProductMaterialsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    SearchKeyword?: SearchKeywordUncheckedUpdateManyWithoutMaterialNestedInput
+  }
+
+  export type MaterialCreateWithoutSearchKeywordInput = {
+    name: string
+    ProductMaterials?: ProductMaterialCreateNestedManyWithoutMaterialInput
+  }
+
+  export type MaterialUncheckedCreateWithoutSearchKeywordInput = {
+    id?: number
+    name: string
+    ProductMaterials?: ProductMaterialUncheckedCreateNestedManyWithoutMaterialInput
+  }
+
+  export type MaterialCreateOrConnectWithoutSearchKeywordInput = {
+    where: MaterialWhereUniqueInput
+    create: XOR<MaterialCreateWithoutSearchKeywordInput, MaterialUncheckedCreateWithoutSearchKeywordInput>
+  }
+
+  export type MaterialUpsertWithoutSearchKeywordInput = {
+    update: XOR<MaterialUpdateWithoutSearchKeywordInput, MaterialUncheckedUpdateWithoutSearchKeywordInput>
+    create: XOR<MaterialCreateWithoutSearchKeywordInput, MaterialUncheckedCreateWithoutSearchKeywordInput>
+    where?: MaterialWhereInput
+  }
+
+  export type MaterialUpdateToOneWithWhereWithoutSearchKeywordInput = {
+    where?: MaterialWhereInput
+    data: XOR<MaterialUpdateWithoutSearchKeywordInput, MaterialUncheckedUpdateWithoutSearchKeywordInput>
+  }
+
+  export type MaterialUpdateWithoutSearchKeywordInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    ProductMaterials?: ProductMaterialUpdateManyWithoutMaterialNestedInput
+  }
+
+  export type MaterialUncheckedUpdateWithoutSearchKeywordInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    ProductMaterials?: ProductMaterialUncheckedUpdateManyWithoutMaterialNestedInput
   }
 
   export type UserWishCreateWithoutUserInput = {
@@ -10831,6 +12191,11 @@ export namespace Prisma {
     productId: number
   }
 
+  export type SearchKeywordCreateManyMaterialInput = {
+    id?: number
+    keyword: string
+  }
+
   export type ProductMaterialUpdateWithoutMaterialInput = {
     product?: ProductUpdateOneRequiredWithoutProductMaterialsNestedInput
   }
@@ -10843,6 +12208,20 @@ export namespace Prisma {
   export type ProductMaterialUncheckedUpdateManyWithoutMaterialInput = {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type SearchKeywordUpdateWithoutMaterialInput = {
+    keyword?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SearchKeywordUncheckedUpdateWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    keyword?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SearchKeywordUncheckedUpdateManyWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    keyword?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserWishCreateManyUserInput = {
