@@ -39,6 +39,7 @@ model Product {
   ProductMaterials ProductMaterial[]
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
+  UserWish         UserWish[]
 
   @@index([companyId], name: "idx_company_id")
   @@index([categoryId], name: "idx_category_id")
@@ -71,4 +72,21 @@ model ProductMaterial {
   @@index([productId], name: "idx_product_id")
   @@index([materialId], name: "idx_material_id")
   @@map("product_material")
+}
+
+model User {
+  id       Int        @id @default(autoincrement())
+  UserWish UserWish[]
+}
+
+model UserWish {
+  id        Int     @id @default(autoincrement())
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@index([userId], name: "idx_user_id")
+  @@index([productId], name: "idx_product_id")
+  @@map("user_wish")
 }

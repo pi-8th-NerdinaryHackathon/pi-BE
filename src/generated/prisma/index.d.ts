@@ -38,6 +38,16 @@ export type Material = $Result.DefaultSelection<Prisma.$MaterialPayload>
  * 
  */
 export type ProductMaterial = $Result.DefaultSelection<Prisma.$ProductMaterialPayload>
+/**
+ * Model User
+ * 
+ */
+export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model UserWish
+ * 
+ */
+export type UserWish = $Result.DefaultSelection<Prisma.$UserWishPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -213,6 +223,26 @@ export class PrismaClient<
     * ```
     */
   get productMaterial(): Prisma.ProductMaterialDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.user`: Exposes CRUD operations for the **User** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Users
+    * const users = await prisma.user.findMany()
+    * ```
+    */
+  get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userWish`: Exposes CRUD operations for the **UserWish** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserWishes
+    * const userWishes = await prisma.userWish.findMany()
+    * ```
+    */
+  get userWish(): Prisma.UserWishDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -657,7 +687,9 @@ export namespace Prisma {
     Product: 'Product',
     Category: 'Category',
     Material: 'Material',
-    ProductMaterial: 'ProductMaterial'
+    ProductMaterial: 'ProductMaterial',
+    User: 'User',
+    UserWish: 'UserWish'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -676,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "company" | "product" | "category" | "material" | "productMaterial"
+      modelProps: "company" | "product" | "category" | "material" | "productMaterial" | "user" | "userWish"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1010,6 +1042,138 @@ export namespace Prisma {
           }
         }
       }
+      User: {
+        payload: Prisma.$UserPayload<ExtArgs>
+        fields: Prisma.UserFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          findFirst: {
+            args: Prisma.UserFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          findMany: {
+            args: Prisma.UserFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
+          create: {
+            args: Prisma.UserCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          createMany: {
+            args: Prisma.UserCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.UserDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          update: {
+            args: Prisma.UserUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.UserUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>
+          }
+          aggregate: {
+            args: Prisma.UserAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser>
+          }
+          groupBy: {
+            args: Prisma.UserGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserCountArgs<ExtArgs>
+            result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserWish: {
+        payload: Prisma.$UserWishPayload<ExtArgs>
+        fields: Prisma.UserWishFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserWishFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserWishPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserWishFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserWishPayload>
+          }
+          findFirst: {
+            args: Prisma.UserWishFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserWishPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserWishFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserWishPayload>
+          }
+          findMany: {
+            args: Prisma.UserWishFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserWishPayload>[]
+          }
+          create: {
+            args: Prisma.UserWishCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserWishPayload>
+          }
+          createMany: {
+            args: Prisma.UserWishCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.UserWishDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserWishPayload>
+          }
+          update: {
+            args: Prisma.UserWishUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserWishPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserWishDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserWishUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.UserWishUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserWishPayload>
+          }
+          aggregate: {
+            args: Prisma.UserWishAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserWish>
+          }
+          groupBy: {
+            args: Prisma.UserWishGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserWishGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserWishCountArgs<ExtArgs>
+            result: $Utils.Optional<UserWishCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1099,6 +1263,8 @@ export namespace Prisma {
     category?: CategoryOmit
     material?: MaterialOmit
     productMaterial?: ProductMaterialOmit
+    user?: UserOmit
+    userWish?: UserWishOmit
   }
 
   /* Types for Logging */
@@ -1225,10 +1391,12 @@ export namespace Prisma {
 
   export type ProductCountOutputType = {
     ProductMaterials: number
+    UserWish: number
   }
 
   export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ProductMaterials?: boolean | ProductCountOutputTypeCountProductMaterialsArgs
+    UserWish?: boolean | ProductCountOutputTypeCountUserWishArgs
   }
 
   // Custom InputTypes
@@ -1247,6 +1415,13 @@ export namespace Prisma {
    */
   export type ProductCountOutputTypeCountProductMaterialsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductMaterialWhereInput
+  }
+
+  /**
+   * ProductCountOutputType without action
+   */
+  export type ProductCountOutputTypeCountUserWishArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWishWhereInput
   }
 
 
@@ -1309,6 +1484,37 @@ export namespace Prisma {
    */
   export type MaterialCountOutputTypeCountProductMaterialsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductMaterialWhereInput
+  }
+
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    UserWish: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    UserWish?: boolean | UserCountOutputTypeCountUserWishArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUserWishArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWishWhereInput
   }
 
 
@@ -2561,6 +2767,7 @@ export namespace Prisma {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     ProductMaterials?: boolean | Product$ProductMaterialsArgs<ExtArgs>
+    UserWish?: boolean | Product$UserWishArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
 
@@ -2583,6 +2790,7 @@ export namespace Prisma {
     company?: boolean | CompanyDefaultArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     ProductMaterials?: boolean | Product$ProductMaterialsArgs<ExtArgs>
+    UserWish?: boolean | Product$UserWishArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2592,6 +2800,7 @@ export namespace Prisma {
       company: Prisma.$CompanyPayload<ExtArgs>
       category: Prisma.$CategoryPayload<ExtArgs>
       ProductMaterials: Prisma.$ProductMaterialPayload<ExtArgs>[]
+      UserWish: Prisma.$UserWishPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2946,6 +3155,7 @@ export namespace Prisma {
     company<T extends CompanyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CompanyDefaultArgs<ExtArgs>>): Prisma__CompanyClient<$Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     ProductMaterials<T extends Product$ProductMaterialsArgs<ExtArgs> = {}>(args?: Subset<T, Product$ProductMaterialsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductMaterialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    UserWish<T extends Product$UserWishArgs<ExtArgs> = {}>(args?: Subset<T, Product$UserWishArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3348,6 +3558,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProductMaterialScalarFieldEnum | ProductMaterialScalarFieldEnum[]
+  }
+
+  /**
+   * Product.UserWish
+   */
+  export type Product$UserWishArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    where?: UserWishWhereInput
+    orderBy?: UserWishOrderByWithRelationInput | UserWishOrderByWithRelationInput[]
+    cursor?: UserWishWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserWishScalarFieldEnum | UserWishScalarFieldEnum[]
   }
 
   /**
@@ -6235,6 +6469,1904 @@ export namespace Prisma {
 
 
   /**
+   * Model User
+   */
+
+  export type AggregateUser = {
+    _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
+    _min: UserMinAggregateOutputType | null
+    _max: UserMaxAggregateOutputType | null
+  }
+
+  export type UserAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type UserSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type UserMinAggregateOutputType = {
+    id: number | null
+  }
+
+  export type UserMaxAggregateOutputType = {
+    id: number | null
+  }
+
+  export type UserCountAggregateOutputType = {
+    id: number
+    _all: number
+  }
+
+
+  export type UserAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type UserSumAggregateInputType = {
+    id?: true
+  }
+
+  export type UserMinAggregateInputType = {
+    id?: true
+  }
+
+  export type UserMaxAggregateInputType = {
+    id?: true
+  }
+
+  export type UserCountAggregateInputType = {
+    id?: true
+    _all?: true
+  }
+
+  export type UserAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which User to aggregate.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Users
+    **/
+    _count?: true | UserCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserMaxAggregateInputType
+  }
+
+  export type GetUserAggregateType<T extends UserAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser[P]>
+      : GetScalarType<T[P], AggregateUser[P]>
+  }
+
+
+
+
+  export type UserGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWhereInput
+    orderBy?: UserOrderByWithAggregationInput | UserOrderByWithAggregationInput[]
+    by: UserScalarFieldEnum[] | UserScalarFieldEnum
+    having?: UserScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserCountAggregateInputType | true
+    _avg?: UserAvgAggregateInputType
+    _sum?: UserSumAggregateInputType
+    _min?: UserMinAggregateInputType
+    _max?: UserMaxAggregateInputType
+  }
+
+  export type UserGroupByOutputType = {
+    id: number
+    _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
+    _min: UserMinAggregateOutputType | null
+    _max: UserMaxAggregateOutputType | null
+  }
+
+  type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserGroupByOutputType[P]>
+            : GetScalarType<T[P], UserGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    UserWish?: boolean | User$UserWishArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user"]>
+
+
+
+  export type UserSelectScalar = {
+    id?: boolean
+  }
+
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    UserWish?: boolean | User$UserWishArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "User"
+    objects: {
+      UserWish: Prisma.$UserWishPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+    }, ExtArgs["result"]["user"]>
+    composites: {}
+  }
+
+  type UserGetPayload<S extends boolean | null | undefined | UserDefaultArgs> = $Result.GetResult<Prisma.$UserPayload, S>
+
+  type UserCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserCountAggregateInputType | true
+    }
+
+  export interface UserDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['User'], meta: { name: 'User' } }
+    /**
+     * Find zero or one User that matches the filter.
+     * @param {UserFindUniqueArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserFindUniqueArgs>(args: SelectSubset<T, UserFindUniqueArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserFindUniqueOrThrowArgs>(args: SelectSubset<T, UserFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFindFirstArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserFindFirstArgs>(args?: SelectSubset<T, UserFindFirstArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFindFirstOrThrowArgs} args - Arguments to find a User
+     * @example
+     * // Get one User
+     * const user = await prisma.user.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserFindFirstOrThrowArgs>(args?: SelectSubset<T, UserFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Users that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Users
+     * const users = await prisma.user.findMany()
+     * 
+     * // Get first 10 Users
+     * const users = await prisma.user.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User.
+     * @param {UserCreateArgs} args - Arguments to create a User.
+     * @example
+     * // Create one User
+     * const User = await prisma.user.create({
+     *   data: {
+     *     // ... data to create a User
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserCreateArgs>(args: SelectSubset<T, UserCreateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Users.
+     * @param {UserCreateManyArgs} args - Arguments to create many Users.
+     * @example
+     * // Create many Users
+     * const user = await prisma.user.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserCreateManyArgs>(args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a User.
+     * @param {UserDeleteArgs} args - Arguments to delete one User.
+     * @example
+     * // Delete one User
+     * const User = await prisma.user.delete({
+     *   where: {
+     *     // ... filter to delete one User
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserDeleteArgs>(args: SelectSubset<T, UserDeleteArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User.
+     * @param {UserUpdateArgs} args - Arguments to update one User.
+     * @example
+     * // Update one User
+     * const user = await prisma.user.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserUpdateArgs>(args: SelectSubset<T, UserUpdateArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Users.
+     * @param {UserDeleteManyArgs} args - Arguments to filter Users to delete.
+     * @example
+     * // Delete a few Users
+     * const { count } = await prisma.user.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserDeleteManyArgs>(args?: SelectSubset<T, UserDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Users
+     * const user = await prisma.user.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one User.
+     * @param {UserUpsertArgs} args - Arguments to update or create a User.
+     * @example
+     * // Update or create a User
+     * const user = await prisma.user.upsert({
+     *   create: {
+     *     // ... data to create a User
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserUpsertArgs>(args: SelectSubset<T, UserUpsertArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Users.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserCountArgs} args - Arguments to filter Users to count.
+     * @example
+     * // Count the number of Users
+     * const count = await prisma.user.count({
+     *   where: {
+     *     // ... the filter for the Users we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserCountArgs>(
+      args?: Subset<T, UserCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserAggregateArgs>(args: Subset<T, UserAggregateArgs>): Prisma.PrismaPromise<GetUserAggregateType<T>>
+
+    /**
+     * Group by User.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserGroupByArgs['orderBy'] }
+        : { orderBy?: UserGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the User model
+   */
+  readonly fields: UserFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for User.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    UserWish<T extends User$UserWishArgs<ExtArgs> = {}>(args?: Subset<T, User$UserWishArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the User model
+   */
+  interface UserFieldRefs {
+    readonly id: FieldRef<"User", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * User findUnique
+   */
+  export type UserFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User findUniqueOrThrow
+   */
+  export type UserFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User findFirst
+   */
+  export type UserFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Users.
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * User findFirstOrThrow
+   */
+  export type UserFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which User to fetch.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Users.
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Users.
+     */
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * User findMany
+   */
+  export type UserFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter, which Users to fetch.
+     */
+    where?: UserWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Users to fetch.
+     */
+    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Users.
+     */
+    cursor?: UserWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Users from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Users.
+     */
+    skip?: number
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * User create
+   */
+  export type UserCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * The data needed to create a User.
+     */
+    data?: XOR<UserCreateInput, UserUncheckedCreateInput>
+  }
+
+  /**
+   * User createMany
+   */
+  export type UserCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Users.
+     */
+    data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * User update
+   */
+  export type UserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * The data needed to update a User.
+     */
+    data: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+    /**
+     * Choose, which User to update.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User updateMany
+   */
+  export type UserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Users.
+     */
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    /**
+     * Filter which Users to update
+     */
+    where?: UserWhereInput
+    /**
+     * Limit how many Users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * User upsert
+   */
+  export type UserUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * The filter to search for the User to update in case it exists.
+     */
+    where: UserWhereUniqueInput
+    /**
+     * In case the User found by the `where` argument doesn't exist, create a new User with this data.
+     */
+    create: XOR<UserCreateInput, UserUncheckedCreateInput>
+    /**
+     * In case the User was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserUpdateInput, UserUncheckedUpdateInput>
+  }
+
+  /**
+   * User delete
+   */
+  export type UserDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
+     * Filter which User to delete.
+     */
+    where: UserWhereUniqueInput
+  }
+
+  /**
+   * User deleteMany
+   */
+  export type UserDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Users to delete
+     */
+    where?: UserWhereInput
+    /**
+     * Limit how many Users to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * User.UserWish
+   */
+  export type User$UserWishArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    where?: UserWishWhereInput
+    orderBy?: UserWishOrderByWithRelationInput | UserWishOrderByWithRelationInput[]
+    cursor?: UserWishWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserWishScalarFieldEnum | UserWishScalarFieldEnum[]
+  }
+
+  /**
+   * User without action
+   */
+  export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserWish
+   */
+
+  export type AggregateUserWish = {
+    _count: UserWishCountAggregateOutputType | null
+    _avg: UserWishAvgAggregateOutputType | null
+    _sum: UserWishSumAggregateOutputType | null
+    _min: UserWishMinAggregateOutputType | null
+    _max: UserWishMaxAggregateOutputType | null
+  }
+
+  export type UserWishAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+  }
+
+  export type UserWishSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+  }
+
+  export type UserWishMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+  }
+
+  export type UserWishMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    productId: number | null
+  }
+
+  export type UserWishCountAggregateOutputType = {
+    id: number
+    userId: number
+    productId: number
+    _all: number
+  }
+
+
+  export type UserWishAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+  }
+
+  export type UserWishSumAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+  }
+
+  export type UserWishMinAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+  }
+
+  export type UserWishMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+  }
+
+  export type UserWishCountAggregateInputType = {
+    id?: true
+    userId?: true
+    productId?: true
+    _all?: true
+  }
+
+  export type UserWishAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserWish to aggregate.
+     */
+    where?: UserWishWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserWishes to fetch.
+     */
+    orderBy?: UserWishOrderByWithRelationInput | UserWishOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserWishWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserWishes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserWishes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserWishes
+    **/
+    _count?: true | UserWishCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserWishAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserWishSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserWishMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserWishMaxAggregateInputType
+  }
+
+  export type GetUserWishAggregateType<T extends UserWishAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserWish]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserWish[P]>
+      : GetScalarType<T[P], AggregateUserWish[P]>
+  }
+
+
+
+
+  export type UserWishGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserWishWhereInput
+    orderBy?: UserWishOrderByWithAggregationInput | UserWishOrderByWithAggregationInput[]
+    by: UserWishScalarFieldEnum[] | UserWishScalarFieldEnum
+    having?: UserWishScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserWishCountAggregateInputType | true
+    _avg?: UserWishAvgAggregateInputType
+    _sum?: UserWishSumAggregateInputType
+    _min?: UserWishMinAggregateInputType
+    _max?: UserWishMaxAggregateInputType
+  }
+
+  export type UserWishGroupByOutputType = {
+    id: number
+    userId: number
+    productId: number
+    _count: UserWishCountAggregateOutputType | null
+    _avg: UserWishAvgAggregateOutputType | null
+    _sum: UserWishSumAggregateOutputType | null
+    _min: UserWishMinAggregateOutputType | null
+    _max: UserWishMaxAggregateOutputType | null
+  }
+
+  type GetUserWishGroupByPayload<T extends UserWishGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserWishGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserWishGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserWishGroupByOutputType[P]>
+            : GetScalarType<T[P], UserWishGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserWishSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    productId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userWish"]>
+
+
+
+  export type UserWishSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    productId?: boolean
+  }
+
+  export type UserWishOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "productId", ExtArgs["result"]["userWish"]>
+  export type UserWishInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+  }
+
+  export type $UserWishPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserWish"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      product: Prisma.$ProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      productId: number
+    }, ExtArgs["result"]["userWish"]>
+    composites: {}
+  }
+
+  type UserWishGetPayload<S extends boolean | null | undefined | UserWishDefaultArgs> = $Result.GetResult<Prisma.$UserWishPayload, S>
+
+  type UserWishCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserWishFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserWishCountAggregateInputType | true
+    }
+
+  export interface UserWishDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserWish'], meta: { name: 'UserWish' } }
+    /**
+     * Find zero or one UserWish that matches the filter.
+     * @param {UserWishFindUniqueArgs} args - Arguments to find a UserWish
+     * @example
+     * // Get one UserWish
+     * const userWish = await prisma.userWish.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserWishFindUniqueArgs>(args: SelectSubset<T, UserWishFindUniqueArgs<ExtArgs>>): Prisma__UserWishClient<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserWish that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserWishFindUniqueOrThrowArgs} args - Arguments to find a UserWish
+     * @example
+     * // Get one UserWish
+     * const userWish = await prisma.userWish.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserWishFindUniqueOrThrowArgs>(args: SelectSubset<T, UserWishFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserWishClient<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserWish that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserWishFindFirstArgs} args - Arguments to find a UserWish
+     * @example
+     * // Get one UserWish
+     * const userWish = await prisma.userWish.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserWishFindFirstArgs>(args?: SelectSubset<T, UserWishFindFirstArgs<ExtArgs>>): Prisma__UserWishClient<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserWish that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserWishFindFirstOrThrowArgs} args - Arguments to find a UserWish
+     * @example
+     * // Get one UserWish
+     * const userWish = await prisma.userWish.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserWishFindFirstOrThrowArgs>(args?: SelectSubset<T, UserWishFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserWishClient<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserWishes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserWishFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserWishes
+     * const userWishes = await prisma.userWish.findMany()
+     * 
+     * // Get first 10 UserWishes
+     * const userWishes = await prisma.userWish.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userWishWithIdOnly = await prisma.userWish.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserWishFindManyArgs>(args?: SelectSubset<T, UserWishFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserWish.
+     * @param {UserWishCreateArgs} args - Arguments to create a UserWish.
+     * @example
+     * // Create one UserWish
+     * const UserWish = await prisma.userWish.create({
+     *   data: {
+     *     // ... data to create a UserWish
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserWishCreateArgs>(args: SelectSubset<T, UserWishCreateArgs<ExtArgs>>): Prisma__UserWishClient<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserWishes.
+     * @param {UserWishCreateManyArgs} args - Arguments to create many UserWishes.
+     * @example
+     * // Create many UserWishes
+     * const userWish = await prisma.userWish.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserWishCreateManyArgs>(args?: SelectSubset<T, UserWishCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a UserWish.
+     * @param {UserWishDeleteArgs} args - Arguments to delete one UserWish.
+     * @example
+     * // Delete one UserWish
+     * const UserWish = await prisma.userWish.delete({
+     *   where: {
+     *     // ... filter to delete one UserWish
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserWishDeleteArgs>(args: SelectSubset<T, UserWishDeleteArgs<ExtArgs>>): Prisma__UserWishClient<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserWish.
+     * @param {UserWishUpdateArgs} args - Arguments to update one UserWish.
+     * @example
+     * // Update one UserWish
+     * const userWish = await prisma.userWish.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserWishUpdateArgs>(args: SelectSubset<T, UserWishUpdateArgs<ExtArgs>>): Prisma__UserWishClient<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserWishes.
+     * @param {UserWishDeleteManyArgs} args - Arguments to filter UserWishes to delete.
+     * @example
+     * // Delete a few UserWishes
+     * const { count } = await prisma.userWish.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserWishDeleteManyArgs>(args?: SelectSubset<T, UserWishDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserWishes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserWishUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserWishes
+     * const userWish = await prisma.userWish.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserWishUpdateManyArgs>(args: SelectSubset<T, UserWishUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one UserWish.
+     * @param {UserWishUpsertArgs} args - Arguments to update or create a UserWish.
+     * @example
+     * // Update or create a UserWish
+     * const userWish = await prisma.userWish.upsert({
+     *   create: {
+     *     // ... data to create a UserWish
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserWish we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserWishUpsertArgs>(args: SelectSubset<T, UserWishUpsertArgs<ExtArgs>>): Prisma__UserWishClient<$Result.GetResult<Prisma.$UserWishPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserWishes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserWishCountArgs} args - Arguments to filter UserWishes to count.
+     * @example
+     * // Count the number of UserWishes
+     * const count = await prisma.userWish.count({
+     *   where: {
+     *     // ... the filter for the UserWishes we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserWishCountArgs>(
+      args?: Subset<T, UserWishCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserWishCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserWish.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserWishAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserWishAggregateArgs>(args: Subset<T, UserWishAggregateArgs>): Prisma.PrismaPromise<GetUserWishAggregateType<T>>
+
+    /**
+     * Group by UserWish.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserWishGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserWishGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserWishGroupByArgs['orderBy'] }
+        : { orderBy?: UserWishGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserWishGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserWishGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserWish model
+   */
+  readonly fields: UserWishFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserWish.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserWishClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserWish model
+   */
+  interface UserWishFieldRefs {
+    readonly id: FieldRef<"UserWish", 'Int'>
+    readonly userId: FieldRef<"UserWish", 'Int'>
+    readonly productId: FieldRef<"UserWish", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserWish findUnique
+   */
+  export type UserWishFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    /**
+     * Filter, which UserWish to fetch.
+     */
+    where: UserWishWhereUniqueInput
+  }
+
+  /**
+   * UserWish findUniqueOrThrow
+   */
+  export type UserWishFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    /**
+     * Filter, which UserWish to fetch.
+     */
+    where: UserWishWhereUniqueInput
+  }
+
+  /**
+   * UserWish findFirst
+   */
+  export type UserWishFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    /**
+     * Filter, which UserWish to fetch.
+     */
+    where?: UserWishWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserWishes to fetch.
+     */
+    orderBy?: UserWishOrderByWithRelationInput | UserWishOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserWishes.
+     */
+    cursor?: UserWishWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserWishes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserWishes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserWishes.
+     */
+    distinct?: UserWishScalarFieldEnum | UserWishScalarFieldEnum[]
+  }
+
+  /**
+   * UserWish findFirstOrThrow
+   */
+  export type UserWishFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    /**
+     * Filter, which UserWish to fetch.
+     */
+    where?: UserWishWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserWishes to fetch.
+     */
+    orderBy?: UserWishOrderByWithRelationInput | UserWishOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserWishes.
+     */
+    cursor?: UserWishWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserWishes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserWishes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserWishes.
+     */
+    distinct?: UserWishScalarFieldEnum | UserWishScalarFieldEnum[]
+  }
+
+  /**
+   * UserWish findMany
+   */
+  export type UserWishFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    /**
+     * Filter, which UserWishes to fetch.
+     */
+    where?: UserWishWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserWishes to fetch.
+     */
+    orderBy?: UserWishOrderByWithRelationInput | UserWishOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserWishes.
+     */
+    cursor?: UserWishWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserWishes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserWishes.
+     */
+    skip?: number
+    distinct?: UserWishScalarFieldEnum | UserWishScalarFieldEnum[]
+  }
+
+  /**
+   * UserWish create
+   */
+  export type UserWishCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserWish.
+     */
+    data: XOR<UserWishCreateInput, UserWishUncheckedCreateInput>
+  }
+
+  /**
+   * UserWish createMany
+   */
+  export type UserWishCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserWishes.
+     */
+    data: UserWishCreateManyInput | UserWishCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserWish update
+   */
+  export type UserWishUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserWish.
+     */
+    data: XOR<UserWishUpdateInput, UserWishUncheckedUpdateInput>
+    /**
+     * Choose, which UserWish to update.
+     */
+    where: UserWishWhereUniqueInput
+  }
+
+  /**
+   * UserWish updateMany
+   */
+  export type UserWishUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserWishes.
+     */
+    data: XOR<UserWishUpdateManyMutationInput, UserWishUncheckedUpdateManyInput>
+    /**
+     * Filter which UserWishes to update
+     */
+    where?: UserWishWhereInput
+    /**
+     * Limit how many UserWishes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserWish upsert
+   */
+  export type UserWishUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserWish to update in case it exists.
+     */
+    where: UserWishWhereUniqueInput
+    /**
+     * In case the UserWish found by the `where` argument doesn't exist, create a new UserWish with this data.
+     */
+    create: XOR<UserWishCreateInput, UserWishUncheckedCreateInput>
+    /**
+     * In case the UserWish was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserWishUpdateInput, UserWishUncheckedUpdateInput>
+  }
+
+  /**
+   * UserWish delete
+   */
+  export type UserWishDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+    /**
+     * Filter which UserWish to delete.
+     */
+    where: UserWishWhereUniqueInput
+  }
+
+  /**
+   * UserWish deleteMany
+   */
+  export type UserWishDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserWishes to delete
+     */
+    where?: UserWishWhereInput
+    /**
+     * Limit how many UserWishes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserWish without action
+   */
+  export type UserWishDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserWish
+     */
+    select?: UserWishSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserWish
+     */
+    omit?: UserWishOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserWishInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6298,6 +8430,22 @@ export namespace Prisma {
   };
 
   export type ProductMaterialScalarFieldEnum = (typeof ProductMaterialScalarFieldEnum)[keyof typeof ProductMaterialScalarFieldEnum]
+
+
+  export const UserScalarFieldEnum: {
+    id: 'id'
+  };
+
+  export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const UserWishScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    productId: 'productId'
+  };
+
+  export type UserWishScalarFieldEnum = (typeof UserWishScalarFieldEnum)[keyof typeof UserWishScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6465,6 +8613,7 @@ export namespace Prisma {
     company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     ProductMaterials?: ProductMaterialListRelationFilter
+    UserWish?: UserWishListRelationFilter
   }
 
   export type ProductOrderByWithRelationInput = {
@@ -6480,6 +8629,7 @@ export namespace Prisma {
     company?: CompanyOrderByWithRelationInput
     category?: CategoryOrderByWithRelationInput
     ProductMaterials?: ProductMaterialOrderByRelationAggregateInput
+    UserWish?: UserWishOrderByRelationAggregateInput
     _relevance?: ProductOrderByRelevanceInput
   }
 
@@ -6499,6 +8649,7 @@ export namespace Prisma {
     company?: XOR<CompanyScalarRelationFilter, CompanyWhereInput>
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     ProductMaterials?: ProductMaterialListRelationFilter
+    UserWish?: UserWishListRelationFilter
   }, "id">
 
   export type ProductOrderByWithAggregationInput = {
@@ -6669,6 +8820,93 @@ export namespace Prisma {
     materialId?: IntWithAggregatesFilter<"ProductMaterial"> | number
   }
 
+  export type UserWhereInput = {
+    AND?: UserWhereInput | UserWhereInput[]
+    OR?: UserWhereInput[]
+    NOT?: UserWhereInput | UserWhereInput[]
+    id?: IntFilter<"User"> | number
+    UserWish?: UserWishListRelationFilter
+  }
+
+  export type UserOrderByWithRelationInput = {
+    id?: SortOrder
+    UserWish?: UserWishOrderByRelationAggregateInput
+  }
+
+  export type UserWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: UserWhereInput | UserWhereInput[]
+    OR?: UserWhereInput[]
+    NOT?: UserWhereInput | UserWhereInput[]
+    UserWish?: UserWishListRelationFilter
+  }, "id">
+
+  export type UserOrderByWithAggregationInput = {
+    id?: SortOrder
+    _count?: UserCountOrderByAggregateInput
+    _avg?: UserAvgOrderByAggregateInput
+    _max?: UserMaxOrderByAggregateInput
+    _min?: UserMinOrderByAggregateInput
+    _sum?: UserSumOrderByAggregateInput
+  }
+
+  export type UserScalarWhereWithAggregatesInput = {
+    AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
+    OR?: UserScalarWhereWithAggregatesInput[]
+    NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"User"> | number
+  }
+
+  export type UserWishWhereInput = {
+    AND?: UserWishWhereInput | UserWishWhereInput[]
+    OR?: UserWishWhereInput[]
+    NOT?: UserWishWhereInput | UserWishWhereInput[]
+    id?: IntFilter<"UserWish"> | number
+    userId?: IntFilter<"UserWish"> | number
+    productId?: IntFilter<"UserWish"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }
+
+  export type UserWishOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    user?: UserOrderByWithRelationInput
+    product?: ProductOrderByWithRelationInput
+  }
+
+  export type UserWishWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: UserWishWhereInput | UserWishWhereInput[]
+    OR?: UserWishWhereInput[]
+    NOT?: UserWishWhereInput | UserWishWhereInput[]
+    userId?: IntFilter<"UserWish"> | number
+    productId?: IntFilter<"UserWish"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+  }, "id">
+
+  export type UserWishOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+    _count?: UserWishCountOrderByAggregateInput
+    _avg?: UserWishAvgOrderByAggregateInput
+    _max?: UserWishMaxOrderByAggregateInput
+    _min?: UserWishMinOrderByAggregateInput
+    _sum?: UserWishSumOrderByAggregateInput
+  }
+
+  export type UserWishScalarWhereWithAggregatesInput = {
+    AND?: UserWishScalarWhereWithAggregatesInput | UserWishScalarWhereWithAggregatesInput[]
+    OR?: UserWishScalarWhereWithAggregatesInput[]
+    NOT?: UserWishScalarWhereWithAggregatesInput | UserWishScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"UserWish"> | number
+    userId?: IntWithAggregatesFilter<"UserWish"> | number
+    productId?: IntWithAggregatesFilter<"UserWish"> | number
+  }
+
   export type CompanyCreateInput = {
     name: string
     number: string
@@ -6743,6 +8981,7 @@ export namespace Prisma {
     company: CompanyCreateNestedOneWithoutProductsInput
     category: CategoryCreateNestedOneWithoutProductsInput
     ProductMaterials?: ProductMaterialCreateNestedManyWithoutProductInput
+    UserWish?: UserWishCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateInput = {
@@ -6756,6 +8995,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ProductMaterials?: ProductMaterialUncheckedCreateNestedManyWithoutProductInput
+    UserWish?: UserWishUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductUpdateInput = {
@@ -6768,6 +9008,7 @@ export namespace Prisma {
     company?: CompanyUpdateOneRequiredWithoutProductsNestedInput
     category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     ProductMaterials?: ProductMaterialUpdateManyWithoutProductNestedInput
+    UserWish?: UserWishUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateInput = {
@@ -6781,6 +9022,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ProductMaterials?: ProductMaterialUncheckedUpdateManyWithoutProductNestedInput
+    UserWish?: UserWishUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductCreateManyInput = {
@@ -6924,6 +9166,74 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
     materialId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserCreateInput = {
+    UserWish?: UserWishCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateInput = {
+    id?: number
+    UserWish?: UserWishUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUpdateInput = {
+    UserWish?: UserWishUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    UserWish?: UserWishUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateManyInput = {
+    id?: number
+  }
+
+  export type UserUpdateManyMutationInput = {
+
+  }
+
+  export type UserUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserWishCreateInput = {
+    user: UserCreateNestedOneWithoutUserWishInput
+    product: ProductCreateNestedOneWithoutUserWishInput
+  }
+
+  export type UserWishUncheckedCreateInput = {
+    id?: number
+    userId: number
+    productId: number
+  }
+
+  export type UserWishUpdateInput = {
+    user?: UserUpdateOneRequiredWithoutUserWishNestedInput
+    product?: ProductUpdateOneRequiredWithoutUserWishNestedInput
+  }
+
+  export type UserWishUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserWishCreateManyInput = {
+    id?: number
+    userId: number
+    productId: number
+  }
+
+  export type UserWishUpdateManyMutationInput = {
+
+  }
+
+  export type UserWishUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -7075,12 +9385,22 @@ export namespace Prisma {
     none?: ProductMaterialWhereInput
   }
 
+  export type UserWishListRelationFilter = {
+    every?: UserWishWhereInput
+    some?: UserWishWhereInput
+    none?: UserWishWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type ProductMaterialOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserWishOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7268,6 +9588,61 @@ export namespace Prisma {
     materialId?: SortOrder
   }
 
+  export type UserCountOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type UserAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type UserMaxOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type UserMinOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type UserSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type UserWishCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type UserWishAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type UserWishMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type UserWishMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type UserWishSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    productId?: SortOrder
+  }
+
   export type ProductCreateNestedManyWithoutCompanyInput = {
     create?: XOR<ProductCreateWithoutCompanyInput, ProductUncheckedCreateWithoutCompanyInput> | ProductCreateWithoutCompanyInput[] | ProductUncheckedCreateWithoutCompanyInput[]
     connectOrCreate?: ProductCreateOrConnectWithoutCompanyInput | ProductCreateOrConnectWithoutCompanyInput[]
@@ -7341,11 +9716,25 @@ export namespace Prisma {
     connect?: ProductMaterialWhereUniqueInput | ProductMaterialWhereUniqueInput[]
   }
 
+  export type UserWishCreateNestedManyWithoutProductInput = {
+    create?: XOR<UserWishCreateWithoutProductInput, UserWishUncheckedCreateWithoutProductInput> | UserWishCreateWithoutProductInput[] | UserWishUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserWishCreateOrConnectWithoutProductInput | UserWishCreateOrConnectWithoutProductInput[]
+    createMany?: UserWishCreateManyProductInputEnvelope
+    connect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+  }
+
   export type ProductMaterialUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<ProductMaterialCreateWithoutProductInput, ProductMaterialUncheckedCreateWithoutProductInput> | ProductMaterialCreateWithoutProductInput[] | ProductMaterialUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductMaterialCreateOrConnectWithoutProductInput | ProductMaterialCreateOrConnectWithoutProductInput[]
     createMany?: ProductMaterialCreateManyProductInputEnvelope
     connect?: ProductMaterialWhereUniqueInput | ProductMaterialWhereUniqueInput[]
+  }
+
+  export type UserWishUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<UserWishCreateWithoutProductInput, UserWishUncheckedCreateWithoutProductInput> | UserWishCreateWithoutProductInput[] | UserWishUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserWishCreateOrConnectWithoutProductInput | UserWishCreateOrConnectWithoutProductInput[]
+    createMany?: UserWishCreateManyProductInputEnvelope
+    connect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -7390,6 +9779,20 @@ export namespace Prisma {
     deleteMany?: ProductMaterialScalarWhereInput | ProductMaterialScalarWhereInput[]
   }
 
+  export type UserWishUpdateManyWithoutProductNestedInput = {
+    create?: XOR<UserWishCreateWithoutProductInput, UserWishUncheckedCreateWithoutProductInput> | UserWishCreateWithoutProductInput[] | UserWishUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserWishCreateOrConnectWithoutProductInput | UserWishCreateOrConnectWithoutProductInput[]
+    upsert?: UserWishUpsertWithWhereUniqueWithoutProductInput | UserWishUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: UserWishCreateManyProductInputEnvelope
+    set?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    disconnect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    delete?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    connect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    update?: UserWishUpdateWithWhereUniqueWithoutProductInput | UserWishUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: UserWishUpdateManyWithWhereWithoutProductInput | UserWishUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: UserWishScalarWhereInput | UserWishScalarWhereInput[]
+  }
+
   export type ProductMaterialUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<ProductMaterialCreateWithoutProductInput, ProductMaterialUncheckedCreateWithoutProductInput> | ProductMaterialCreateWithoutProductInput[] | ProductMaterialUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductMaterialCreateOrConnectWithoutProductInput | ProductMaterialCreateOrConnectWithoutProductInput[]
@@ -7402,6 +9805,20 @@ export namespace Prisma {
     update?: ProductMaterialUpdateWithWhereUniqueWithoutProductInput | ProductMaterialUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: ProductMaterialUpdateManyWithWhereWithoutProductInput | ProductMaterialUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: ProductMaterialScalarWhereInput | ProductMaterialScalarWhereInput[]
+  }
+
+  export type UserWishUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<UserWishCreateWithoutProductInput, UserWishUncheckedCreateWithoutProductInput> | UserWishCreateWithoutProductInput[] | UserWishUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: UserWishCreateOrConnectWithoutProductInput | UserWishCreateOrConnectWithoutProductInput[]
+    upsert?: UserWishUpsertWithWhereUniqueWithoutProductInput | UserWishUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: UserWishCreateManyProductInputEnvelope
+    set?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    disconnect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    delete?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    connect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    update?: UserWishUpdateWithWhereUniqueWithoutProductInput | UserWishUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: UserWishUpdateManyWithWhereWithoutProductInput | UserWishUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: UserWishScalarWhereInput | UserWishScalarWhereInput[]
   }
 
   export type ProductCreateNestedManyWithoutCategoryInput = {
@@ -7514,6 +9931,76 @@ export namespace Prisma {
     upsert?: MaterialUpsertWithoutProductMaterialsInput
     connect?: MaterialWhereUniqueInput
     update?: XOR<XOR<MaterialUpdateToOneWithWhereWithoutProductMaterialsInput, MaterialUpdateWithoutProductMaterialsInput>, MaterialUncheckedUpdateWithoutProductMaterialsInput>
+  }
+
+  export type UserWishCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserWishCreateWithoutUserInput, UserWishUncheckedCreateWithoutUserInput> | UserWishCreateWithoutUserInput[] | UserWishUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserWishCreateOrConnectWithoutUserInput | UserWishCreateOrConnectWithoutUserInput[]
+    createMany?: UserWishCreateManyUserInputEnvelope
+    connect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+  }
+
+  export type UserWishUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserWishCreateWithoutUserInput, UserWishUncheckedCreateWithoutUserInput> | UserWishCreateWithoutUserInput[] | UserWishUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserWishCreateOrConnectWithoutUserInput | UserWishCreateOrConnectWithoutUserInput[]
+    createMany?: UserWishCreateManyUserInputEnvelope
+    connect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+  }
+
+  export type UserWishUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserWishCreateWithoutUserInput, UserWishUncheckedCreateWithoutUserInput> | UserWishCreateWithoutUserInput[] | UserWishUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserWishCreateOrConnectWithoutUserInput | UserWishCreateOrConnectWithoutUserInput[]
+    upsert?: UserWishUpsertWithWhereUniqueWithoutUserInput | UserWishUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserWishCreateManyUserInputEnvelope
+    set?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    disconnect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    delete?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    connect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    update?: UserWishUpdateWithWhereUniqueWithoutUserInput | UserWishUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserWishUpdateManyWithWhereWithoutUserInput | UserWishUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserWishScalarWhereInput | UserWishScalarWhereInput[]
+  }
+
+  export type UserWishUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserWishCreateWithoutUserInput, UserWishUncheckedCreateWithoutUserInput> | UserWishCreateWithoutUserInput[] | UserWishUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserWishCreateOrConnectWithoutUserInput | UserWishCreateOrConnectWithoutUserInput[]
+    upsert?: UserWishUpsertWithWhereUniqueWithoutUserInput | UserWishUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserWishCreateManyUserInputEnvelope
+    set?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    disconnect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    delete?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    connect?: UserWishWhereUniqueInput | UserWishWhereUniqueInput[]
+    update?: UserWishUpdateWithWhereUniqueWithoutUserInput | UserWishUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserWishUpdateManyWithWhereWithoutUserInput | UserWishUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserWishScalarWhereInput | UserWishScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutUserWishInput = {
+    create?: XOR<UserCreateWithoutUserWishInput, UserUncheckedCreateWithoutUserWishInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUserWishInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ProductCreateNestedOneWithoutUserWishInput = {
+    create?: XOR<ProductCreateWithoutUserWishInput, ProductUncheckedCreateWithoutUserWishInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutUserWishInput
+    connect?: ProductWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutUserWishNestedInput = {
+    create?: XOR<UserCreateWithoutUserWishInput, UserUncheckedCreateWithoutUserWishInput>
+    connectOrCreate?: UserCreateOrConnectWithoutUserWishInput
+    upsert?: UserUpsertWithoutUserWishInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserWishInput, UserUpdateWithoutUserWishInput>, UserUncheckedUpdateWithoutUserWishInput>
+  }
+
+  export type ProductUpdateOneRequiredWithoutUserWishNestedInput = {
+    create?: XOR<ProductCreateWithoutUserWishInput, ProductUncheckedCreateWithoutUserWishInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutUserWishInput
+    upsert?: ProductUpsertWithoutUserWishInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutUserWishInput, ProductUpdateWithoutUserWishInput>, ProductUncheckedUpdateWithoutUserWishInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -7659,6 +10146,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     category: CategoryCreateNestedOneWithoutProductsInput
     ProductMaterials?: ProductMaterialCreateNestedManyWithoutProductInput
+    UserWish?: UserWishCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutCompanyInput = {
@@ -7671,6 +10159,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ProductMaterials?: ProductMaterialUncheckedCreateNestedManyWithoutProductInput
+    UserWish?: UserWishUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutCompanyInput = {
@@ -7769,6 +10258,25 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserWishCreateWithoutProductInput = {
+    user: UserCreateNestedOneWithoutUserWishInput
+  }
+
+  export type UserWishUncheckedCreateWithoutProductInput = {
+    id?: number
+    userId: number
+  }
+
+  export type UserWishCreateOrConnectWithoutProductInput = {
+    where: UserWishWhereUniqueInput
+    create: XOR<UserWishCreateWithoutProductInput, UserWishUncheckedCreateWithoutProductInput>
+  }
+
+  export type UserWishCreateManyProductInputEnvelope = {
+    data: UserWishCreateManyProductInput | UserWishCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CompanyUpsertWithoutProductsInput = {
     update: XOR<CompanyUpdateWithoutProductsInput, CompanyUncheckedUpdateWithoutProductsInput>
     create: XOR<CompanyCreateWithoutProductsInput, CompanyUncheckedCreateWithoutProductsInput>
@@ -7842,6 +10350,31 @@ export namespace Prisma {
     materialId?: IntFilter<"ProductMaterial"> | number
   }
 
+  export type UserWishUpsertWithWhereUniqueWithoutProductInput = {
+    where: UserWishWhereUniqueInput
+    update: XOR<UserWishUpdateWithoutProductInput, UserWishUncheckedUpdateWithoutProductInput>
+    create: XOR<UserWishCreateWithoutProductInput, UserWishUncheckedCreateWithoutProductInput>
+  }
+
+  export type UserWishUpdateWithWhereUniqueWithoutProductInput = {
+    where: UserWishWhereUniqueInput
+    data: XOR<UserWishUpdateWithoutProductInput, UserWishUncheckedUpdateWithoutProductInput>
+  }
+
+  export type UserWishUpdateManyWithWhereWithoutProductInput = {
+    where: UserWishScalarWhereInput
+    data: XOR<UserWishUpdateManyMutationInput, UserWishUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type UserWishScalarWhereInput = {
+    AND?: UserWishScalarWhereInput | UserWishScalarWhereInput[]
+    OR?: UserWishScalarWhereInput[]
+    NOT?: UserWishScalarWhereInput | UserWishScalarWhereInput[]
+    id?: IntFilter<"UserWish"> | number
+    userId?: IntFilter<"UserWish"> | number
+    productId?: IntFilter<"UserWish"> | number
+  }
+
   export type ProductCreateWithoutCategoryInput = {
     name: string
     detail: string
@@ -7851,6 +10384,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutProductsInput
     ProductMaterials?: ProductMaterialCreateNestedManyWithoutProductInput
+    UserWish?: UserWishCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutCategoryInput = {
@@ -7863,6 +10397,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ProductMaterials?: ProductMaterialUncheckedCreateNestedManyWithoutProductInput
+    UserWish?: UserWishUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutCategoryInput = {
@@ -7935,6 +10470,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     company: CompanyCreateNestedOneWithoutProductsInput
     category: CategoryCreateNestedOneWithoutProductsInput
+    UserWish?: UserWishCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutProductMaterialsInput = {
@@ -7947,6 +10483,7 @@ export namespace Prisma {
     categoryId: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    UserWish?: UserWishUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutProductMaterialsInput = {
@@ -7988,6 +10525,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutProductsNestedInput
     category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
+    UserWish?: UserWishUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutProductMaterialsInput = {
@@ -8000,6 +10538,7 @@ export namespace Prisma {
     categoryId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    UserWish?: UserWishUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type MaterialUpsertWithoutProductMaterialsInput = {
@@ -8022,6 +10561,139 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
   }
 
+  export type UserWishCreateWithoutUserInput = {
+    product: ProductCreateNestedOneWithoutUserWishInput
+  }
+
+  export type UserWishUncheckedCreateWithoutUserInput = {
+    id?: number
+    productId: number
+  }
+
+  export type UserWishCreateOrConnectWithoutUserInput = {
+    where: UserWishWhereUniqueInput
+    create: XOR<UserWishCreateWithoutUserInput, UserWishUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserWishCreateManyUserInputEnvelope = {
+    data: UserWishCreateManyUserInput | UserWishCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserWishUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserWishWhereUniqueInput
+    update: XOR<UserWishUpdateWithoutUserInput, UserWishUncheckedUpdateWithoutUserInput>
+    create: XOR<UserWishCreateWithoutUserInput, UserWishUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserWishUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserWishWhereUniqueInput
+    data: XOR<UserWishUpdateWithoutUserInput, UserWishUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserWishUpdateManyWithWhereWithoutUserInput = {
+    where: UserWishScalarWhereInput
+    data: XOR<UserWishUpdateManyMutationInput, UserWishUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserCreateWithoutUserWishInput = {
+
+  }
+
+  export type UserUncheckedCreateWithoutUserWishInput = {
+    id?: number
+  }
+
+  export type UserCreateOrConnectWithoutUserWishInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutUserWishInput, UserUncheckedCreateWithoutUserWishInput>
+  }
+
+  export type ProductCreateWithoutUserWishInput = {
+    name: string
+    detail: string
+    image: string
+    price?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    company: CompanyCreateNestedOneWithoutProductsInput
+    category: CategoryCreateNestedOneWithoutProductsInput
+    ProductMaterials?: ProductMaterialCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductUncheckedCreateWithoutUserWishInput = {
+    id?: number
+    name: string
+    detail: string
+    image: string
+    price?: number | null
+    companyId: number
+    categoryId: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ProductMaterials?: ProductMaterialUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductCreateOrConnectWithoutUserWishInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutUserWishInput, ProductUncheckedCreateWithoutUserWishInput>
+  }
+
+  export type UserUpsertWithoutUserWishInput = {
+    update: XOR<UserUpdateWithoutUserWishInput, UserUncheckedUpdateWithoutUserWishInput>
+    create: XOR<UserCreateWithoutUserWishInput, UserUncheckedCreateWithoutUserWishInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutUserWishInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutUserWishInput, UserUncheckedUpdateWithoutUserWishInput>
+  }
+
+  export type UserUpdateWithoutUserWishInput = {
+
+  }
+
+  export type UserUncheckedUpdateWithoutUserWishInput = {
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ProductUpsertWithoutUserWishInput = {
+    update: XOR<ProductUpdateWithoutUserWishInput, ProductUncheckedUpdateWithoutUserWishInput>
+    create: XOR<ProductCreateWithoutUserWishInput, ProductUncheckedCreateWithoutUserWishInput>
+    where?: ProductWhereInput
+  }
+
+  export type ProductUpdateToOneWithWhereWithoutUserWishInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutUserWishInput, ProductUncheckedUpdateWithoutUserWishInput>
+  }
+
+  export type ProductUpdateWithoutUserWishInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    detail?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    company?: CompanyUpdateOneRequiredWithoutProductsNestedInput
+    category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
+    ProductMaterials?: ProductMaterialUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductUncheckedUpdateWithoutUserWishInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    detail?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    companyId?: IntFieldUpdateOperationsInput | number
+    categoryId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ProductMaterials?: ProductMaterialUncheckedUpdateManyWithoutProductNestedInput
+  }
+
   export type ProductCreateManyCompanyInput = {
     id?: number
     name: string
@@ -8042,6 +10714,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutProductsNestedInput
     ProductMaterials?: ProductMaterialUpdateManyWithoutProductNestedInput
+    UserWish?: UserWishUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutCompanyInput = {
@@ -8054,6 +10727,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ProductMaterials?: ProductMaterialUncheckedUpdateManyWithoutProductNestedInput
+    UserWish?: UserWishUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutCompanyInput = {
@@ -8072,6 +10746,11 @@ export namespace Prisma {
     materialId: number
   }
 
+  export type UserWishCreateManyProductInput = {
+    id?: number
+    userId: number
+  }
+
   export type ProductMaterialUpdateWithoutProductInput = {
     material?: MaterialUpdateOneRequiredWithoutProductMaterialsNestedInput
   }
@@ -8084,6 +10763,20 @@ export namespace Prisma {
   export type ProductMaterialUncheckedUpdateManyWithoutProductInput = {
     id?: IntFieldUpdateOperationsInput | number
     materialId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserWishUpdateWithoutProductInput = {
+    user?: UserUpdateOneRequiredWithoutUserWishNestedInput
+  }
+
+  export type UserWishUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserWishUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductCreateManyCategoryInput = {
@@ -8106,6 +10799,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     company?: CompanyUpdateOneRequiredWithoutProductsNestedInput
     ProductMaterials?: ProductMaterialUpdateManyWithoutProductNestedInput
+    UserWish?: UserWishUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutCategoryInput = {
@@ -8118,6 +10812,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ProductMaterials?: ProductMaterialUncheckedUpdateManyWithoutProductNestedInput
+    UserWish?: UserWishUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateManyWithoutCategoryInput = {
@@ -8146,6 +10841,25 @@ export namespace Prisma {
   }
 
   export type ProductMaterialUncheckedUpdateManyWithoutMaterialInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserWishCreateManyUserInput = {
+    id?: number
+    productId: number
+  }
+
+  export type UserWishUpdateWithoutUserInput = {
+    product?: ProductUpdateOneRequiredWithoutUserWishNestedInput
+  }
+
+  export type UserWishUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UserWishUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
   }
