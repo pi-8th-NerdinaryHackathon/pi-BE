@@ -23,4 +23,24 @@ export class DetectRepository {
       },
     });
   }
+
+  public async findMaterialIdByMaterialName(searchKeyword: string){
+    const materialInfo = await prisma.searchKeyword.findFirst({
+        where: {
+        keyword: {
+        equals: searchKeyword,
+      },
+    },
+    select: {
+      material: {
+        select: {
+          id: true,
+          name: true,
+        },
+      }
+    },
+  });
+    return materialInfo;
+  }
+  
 }

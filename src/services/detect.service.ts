@@ -4,6 +4,7 @@ import { DetectRepository } from "../repositories/detect.repository";
 export class DetectService {
   private detectRepository: DetectRepository;
 
+
   constructor() {
     this.detectRepository = new DetectRepository();
   }
@@ -28,5 +29,22 @@ export class DetectService {
       material,
       products,
     };
+  }
+
+  //검색어
+  public async getSearchedProduct(data: string) {
+    const materialInfo = await this.detectRepository.findMaterialIdByMaterialName(data);
+    console.log(materialInfo)
+    if(!materialInfo){
+      throw new Error(`'${data.search}'는 매핑되는 재료가 없습니다.`)
+    }
+    const products = await this.detectRepository.findProductsByMaterialId(materialInfo.material.id);
+
+    if(!products) { 
+      throw new Error(`'${data.search}'는 해당되는 제품을 찾을수 없습니다.`);
+    }
+
+
+   return products;
   }
 }

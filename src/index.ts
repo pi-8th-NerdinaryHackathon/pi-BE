@@ -31,7 +31,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 // ✅ API 라우트
 app.use("/hello", helloRouter);
 app.use("/api/products", detectController.router);
-app.use("/api/products", productRouter);
+//app.use("/api/products", productRouter);
 
 // ✅ 에러 핸들링
 app.use(errorMiddleware);

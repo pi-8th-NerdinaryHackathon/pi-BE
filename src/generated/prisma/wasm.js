@@ -157,6 +157,12 @@ exports.Prisma.ProductMaterialScalarFieldEnum = {
   materialId: 'materialId'
 };
 
+exports.Prisma.SearchKeywordScalarFieldEnum = {
+  id: 'id',
+  keyword: 'keyword',
+  materialId: 'materialId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -189,13 +195,18 @@ exports.Prisma.MaterialOrderByRelevanceFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.SearchKeywordOrderByRelevanceFieldEnum = {
+  keyword: 'keyword'
+};
+
 
 exports.Prisma.ModelName = {
   Company: 'Company',
   Product: 'Product',
   Category: 'Category',
   Material: 'Material',
-  ProductMaterial: 'ProductMaterial'
+  ProductMaterial: 'ProductMaterial',
+  SearchKeyword: 'SearchKeyword'
 };
 
 /**
