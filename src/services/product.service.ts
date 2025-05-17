@@ -1,3 +1,4 @@
+import { responseFromProduct, responseFromProducts } from "../dtos/product.dto";
 import {
     getProducts,
     getProduct,
@@ -5,13 +6,17 @@ import {
 } from "../repositories/product.repository";
 
 export const listProduct = async () => {
-    return await getProducts();
+    const products = await getProducts();
+    return responseFromProducts(products);
+    
 };
   
 export const listSpecProduct = async (productId: number) => {
-    return await getProduct(productId);
+    const product = await getProduct(productId);
+    return responseFromProduct(product); 
 };
 
 export const listProductsFromCategory = async (categoryId: number) => {
-    return await getProductsFromCategory(categoryId);
+    const products = await getProductsFromCategory(categoryId);
+    return responseFromProducts(products);
 }

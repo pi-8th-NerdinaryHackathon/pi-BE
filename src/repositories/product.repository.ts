@@ -1,26 +1,54 @@
 import { prisma } from "../db.config";
 import { responseFromProducts, responseFromProduct } from "../dtos/product.dto";
 export const getProducts = async () => {
-  const products = await prisma.product.findMany();
-  return responseFromProducts(products);
+  const products = await prisma.product.findMany({
+    select: {
+      id : true,
+      name : true,
+      detail : true,
+      image : true,
+      price : true,
+      company : true,
+      category : true,
+      },
+  });
+  return products;
 };
 
 export const getProduct = async (productId: number) => {
   const product = await prisma.product.findFirst({
+    select: {
+      id : true,
+      name : true,
+      detail : true,
+      image : true,
+      price : true,
+      company : true,
+      category : true,
+      },
     where: {
       id: productId,
     },
   });
-  return responseFromProduct(product);
+  return product;
 };
 
 export const getProductsFromCategory = async (categoryId: number) => {
   const products = await prisma.product.findMany({
+    select: {
+      id : true,
+      name : true,
+      detail : true,
+      image : true,
+      price : true,
+      company : true,
+      category : true,
+      },
     where: {
       categoryId: categoryId,
     },
   });
-  return responseFromProducts(products);
+  return products;
 };
 
 export const getProductsFromMaterial = async (materialId: number) => {
