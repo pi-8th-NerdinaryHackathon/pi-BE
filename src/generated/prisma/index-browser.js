@@ -120,9 +120,82 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.CompanyScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  number: 'number',
+  address: 'address',
+  adressSpec: 'adressSpec',
+  detail: 'detail'
+};
+
+exports.Prisma.ProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  detail: 'detail',
+  image: 'image',
+  price: 'price',
+  companyId: 'companyId',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.MaterialScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ProductMaterialScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  materialId: 'materialId'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.CompanyOrderByRelevanceFieldEnum = {
+  name: 'name',
+  number: 'number',
+  address: 'address',
+  adressSpec: 'adressSpec',
+  detail: 'detail'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.ProductOrderByRelevanceFieldEnum = {
+  name: 'name',
+  detail: 'detail',
+  image: 'image'
+};
+
+exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
+  name: 'name'
+};
+
+exports.Prisma.MaterialOrderByRelevanceFieldEnum = {
+  name: 'name'
+};
+
 
 exports.Prisma.ModelName = {
-
+  Company: 'Company',
+  Product: 'Product',
+  Category: 'Category',
+  Material: 'Material',
+  ProductMaterial: 'ProductMaterial'
 };
 
 /**
