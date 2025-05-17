@@ -5,7 +5,6 @@ export class DetectService {
   private detectRepository: DetectRepository;
   private chatbotService: ChatbotService;
 
-
   constructor() {
     this.detectRepository = new DetectRepository();
     this.chatbotService = new ChatbotService();
@@ -44,9 +43,23 @@ ${imageUrl}
 
     console.log("🧠 GPT 응답 label:", label); // ✅ 1. 라벨 확인 로그
 
+    // ✅ 영어 → 한글 라벨 매핑
+    const labelMap: Record<string, string> = {
+      fabric: "면직물",
+      glass: "유리",
+      wood: "목재",
+      plastic: "플라스틱",
+      can: "알루미늄",
+    };
+
+    const koreanLabel = labelMap[label];
+    if (!koreanLabel) {
+      throw new Error(`라벨 매핑이 존재하지 않습니다: ${label}`);
+    }
+
     // 카테고리를 기반으로 material 찾기
     const material = await this.detectRepository.findMaterialByLabel(
-      label.trim()
+      koreanLabel
     );
 
     console.log("📦 조회된 material:", material); // ✅ 2. 실제 DB 결과 확인 로그
@@ -61,7 +74,7 @@ ${imageUrl}
     );
 
     return {
-      label,
+      label: koreanLabel, // 프론트에 한글 라벨 전달
       material,
       products,
     };
@@ -69,19 +82,21 @@ ${imageUrl}
 
   //검색어
   public async getSearchedProduct(data: string) {
-    const materialInfo = await this.detectRepository.findMaterialIdByMaterialName(data);
-    console.log(materialInfo)
-    if(!materialInfo){
+    const materialInfo =
+      await this.detectRepository.findMaterialIdByMaterialName(data);
+    console.log(materialInfo);
+    if (!materialInfo) {
       return [];
     }
 
-    const products = await this.detectRepository.findProductsByMaterialId(materialInfo.material.id);
+    const products = await this.detectRepository.findProductsByMaterialId(
+      materialInfo.material.id
+    );
 
-    if(!products) { 
+    if (!products) {
       return [];
     }
 
-
-   return products;
+    return products;
   }
 }
