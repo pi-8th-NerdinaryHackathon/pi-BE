@@ -73,3 +73,14 @@ export const getProductsFromMaterial = async (materialId: number) => {
 
   return responseFromProducts(products);
 };
+
+export const getCategoryList = async () => {
+  const categories = await prisma.category.findMany({
+    select:{
+      id: true,
+      name: true
+    }
+  });
+  console.log(categories);
+  return categories;
+}
