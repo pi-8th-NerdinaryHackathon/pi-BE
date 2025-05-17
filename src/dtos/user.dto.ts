@@ -4,4 +4,8 @@ export const responseFromUserWish = (userWish: any) => {
 
 export const responseFromWish = (wish: any) => {
     return wish;
-  };
+};
+  
+export const responseFomeUser = (user: any) => {
+    return user
+}

@@ -1,5 +1,14 @@
 import { prisma } from "../db.config";
 
+export const getUser = async (uuid: string) => {
+    const user = prisma.user.findFirst({
+        where: {
+            uuid: uuid
+        }
+    })
+    return user;
+}
+
 export const getWishFromUserId = async (userId: number) => {
     const wish = await prisma.userWish.findFirst({
         select: {
@@ -47,4 +56,12 @@ export const deleteUserWish = async (id: number) => {
         }
     });
     return wish;
+}
+export const addUser = async (data: {
+    uuid: string
+}) => {
+    const user = await prisma.user.create({
+        data
+    })
+    return user;
 }
