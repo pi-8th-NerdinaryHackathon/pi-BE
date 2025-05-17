@@ -2,7 +2,8 @@ import { Request, Response, Router } from "express";
 import {
     listProduct,
     listSpecProduct,
-    listProductsFromCategory
+    listProductsFromCategory,
+    listProductCategory
 } from "../services/product.service";
 import HttpException from "../errors/HttpException";
 export const productRouter = Router();
@@ -122,6 +123,40 @@ productRouter.get("/category/:categoryId", async (req: Request, res: Response) =
 
 /**
  * @swagger
+ * /api/products/categories:
+ *   get:
+ *     summary: 상품 카테고리 조회
+ *     tags: [Product]
+ *     responses:
+ *       200:
+ *         description: 상품 카테고리 목록 반환
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                     example: 1
+ *                   name:
+ *                     type: string
+ *                     example: "가방"
+ *       500:
+ *         description: 서버 오류
+ */
+productRouter.get("/categories", async(req: Request, res:Response) => {
+
+    console.log("cojtro");
+    const categories = await listProductCategory();
+    console.log(categories);
+    res.status(200).json({categories});
+
+});
+
+/**
+ * @swagger
  * /api/products/{id}:
  *   get:
  *     summary: 상품 상세 조회
@@ -155,3 +190,5 @@ productRouter.get("/:id", async (req: Request, res: Response) => {
     res.status(500).json({ message: "서버 오류입니다." });
   }
 });
+
+

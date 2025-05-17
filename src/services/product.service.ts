@@ -1,7 +1,8 @@
 import {
     getProducts,
     getProduct,
-    getProductsFromCategory
+    getProductsFromCategory,
+    getCategoryList
 } from "../repositories/product.repository";
 
 export const listProduct = async () => {
@@ -14,4 +15,8 @@ export const listSpecProduct = async (productId: number) => {
 
 export const listProductsFromCategory = async (categoryId: number) => {
     return await getProductsFromCategory(categoryId);
+}
+
+export const listProductCategory = async() => {
+    return await getCategoryList();
 }
