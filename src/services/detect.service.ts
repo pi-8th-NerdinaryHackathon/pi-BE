@@ -5,6 +5,7 @@ export class DetectService {
   private detectRepository: DetectRepository;
   private chatbotService: ChatbotService;
 
+
   constructor() {
     this.detectRepository = new DetectRepository();
     this.chatbotService = new ChatbotService();
@@ -64,5 +65,23 @@ ${imageUrl}
       material,
       products,
     };
+  }
+
+  //검색어
+  public async getSearchedProduct(data: string) {
+    const materialInfo = await this.detectRepository.findMaterialIdByMaterialName(data);
+    console.log(materialInfo)
+    if(!materialInfo){
+      return [];
+    }
+
+    const products = await this.detectRepository.findProductsByMaterialId(materialInfo.material.id);
+
+    if(!products) { 
+      return [];
+    }
+
+
+   return products;
   }
 }

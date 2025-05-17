@@ -208,7 +208,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/mijin/Desktop/pi-BE/src/generated/prisma",
+      "value": "/Users/yeeun/pi-BE/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -222,7 +222,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/mijin/Desktop/pi-BE/prisma/schema.prisma",
+    "sourceFilePath": "/Users/yeeun/pi-BE/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
