@@ -3,25 +3,19 @@ name: deploy-main
 on:
   push:
     branches:
+      - main  # main 브랜치에 새로운 커밋이 올라왔을 떄 실행되도록 합니다
+  workflow_dispatch:  # 필요한 경우 수동으로 실행할 수도 있도록 합니다
       - main
   workflow_dispatch:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest  # CI/CD 파이프라인이 실행될 운영체제 환경을 지정합니다
     runs-on: ubuntu-latest
-
     steps:
+      - TODO
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Generate Prisma client
-        run: npm run generate
-
-      - name: Build TypeScript
-        run: npm run build
 
       - name: Configure SSH
         run: |
@@ -41,36 +35,37 @@ jobs:
           EC2_HOST: ${{ secrets.EC2_HOST }}
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
 
-      - name: Sync files with EC2
+      - name: Copy Workspace
         run: |
-          ssh NerdHack 'mkdir -p /opt/app'
-          rsync -avz --delete \
-            --exclude=node_modules \
-            --exclude=.git \
-            --exclude=*.log \
-            ./ NerdHack:/opt/app/
+          ssh NerdHack 'sudo mkdir -p /opt/app'
+          ssh NerdHack 'sudo chown ubuntu:ubuntu /opt/app'
+          scp -r ./[!.]* NerdHack:/opt/app
 
-      - name: Install dependencies on EC2
+      - name: Install dependencies
         run: |
-          ssh NerdHack 'cd /opt/app && npm ci --omit=dev'
+          ssh NerdHack 'npm install --prefix /opt/app/'
 
-      - name: Setup systemd service (first-time only)
+      - name: Copy systemd service file
         run: |
-          ssh NerdHack 'if [ ! -f /etc/systemd/system/app.service ]; then
+          ssh NerdHack '
             echo "[Unit]
             Description=Nerdy Hack team3
             After=network.target
 
             [Service]
-            User=ubuntu
-            ExecStart=/usr/bin/npm run start --prefix /opt/app/
+            User=${USER}
+            ExecStart=/usr/bin/npm run dev --prefix /opt/app/
             Restart=always
 
             [Install]
             WantedBy=multi-user.target" | sudo tee /etc/systemd/system/app.service
-            sudo systemctl daemon-reload
-            sudo systemctl enable app
-          fi'
+          '
+
+      - name: Enable systemd service
+        run: |
+          ssh NerdHack 'sudo systemctl daemon-reload'
+          ssh NerdHack 'sudo systemctl enable app'
 
       - name: Restart systemd service
-        run: ssh NerdHack 'sudo systemctl restart app'
+        run: |
+          ssh NerdHack 'sudo systemctl restart app'
