@@ -18,7 +18,7 @@ export class DetectController {
 
   /**
    * @swagger
-   * /api/products/image-search:
+   * /api/search/image-search:
    *   post:
    *     summary: 이미지 라벨 기반 제품 검색
    *     description: 업로드된 이미지에서 추출된 라벨로 제품을 검색합니다.
