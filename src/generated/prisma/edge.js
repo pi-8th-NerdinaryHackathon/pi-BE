@@ -201,12 +201,13 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [],
     "sourceFilePath": "D:\\git\\cteam\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/mijin/Desktop/pi-BE/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
