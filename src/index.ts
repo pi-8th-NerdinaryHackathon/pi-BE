@@ -1,27 +1,33 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import helloRouter from "./routes/hello.route";
 import errorMiddleware from "./middlewares/error.middleware";
 import swaggerUi from "swagger-ui-express";
-import { swaggerOptions } from "./config/swagger";
 import swaggerJsdoc from "swagger-jsdoc";
+import { swaggerOptions } from "./config/swagger";
+import { helloRouter } from "./controllers/hello.controller";
 
 dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ✅ Swagger 문서 구성
 const specs = swaggerJsdoc({
   definition: swaggerOptions,
-  apis: ["./src/routes/*.ts"], // 주석 기반 문서화 대상
+  apis: ["./src/controllers/*.ts"],
 });
 
 app.use(cors());
 app.use(express.json());
 
+// ✅ Swagger 문서 라우트
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+
+// ✅ API 라우트
 app.use("/hello", helloRouter);
+
+// ✅ 에러 핸들링
 app.use(errorMiddleware);
 
 app.listen(PORT, () => {
