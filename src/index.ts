@@ -7,6 +7,7 @@ import swaggerJsdoc from "swagger-jsdoc";
 import { swaggerOptions } from "./config/swagger";
 import { helloRouter } from "./controllers/hello.controller";
 import { DetectController } from "./controllers/detect.controller";
+import { productRouter } from "./controllers/product.controller";
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 // ✅ API 라우트
 app.use("/hello", helloRouter);
 app.use("/api/products", detectController.router);
+app.use("/api/products", productRouter);
 
 // ✅ 에러 핸들링
 app.use(errorMiddleware);
