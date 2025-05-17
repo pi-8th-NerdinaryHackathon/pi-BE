@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 export const swaggerOptions = {
   openapi: "3.0.0",
   info: {
@@ -14,7 +15,22 @@ export const swaggerOptions = {
     },
     {
       url: "http://43.203.85.72:3000",
-      description: "퍼블릭 서버", // ← 퍼블릭 IP 서버 추가
+      description: "퍼블릭 서버",
+    },
+  ],
+  components: {
+    securitySchemes: {
+      userIdHeader: {
+        type: "apiKey",
+        in: "header",
+        name: "x-user-Id",
+        description: "유저 UUID를 입력하세요",
+      },
+    },
+  },
+  security: [
+    {
+      userIdHeader: [],
     },
   ],
 };
