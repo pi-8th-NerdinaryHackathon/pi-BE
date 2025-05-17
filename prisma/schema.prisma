@@ -87,6 +87,7 @@ model SearchKeyword {
 
 model User {
   id       Int        @id @default(autoincrement())
+  uuid     String     @db.VarChar(255)
   UserWish UserWish[]
 }
 

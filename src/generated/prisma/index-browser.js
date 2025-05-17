@@ -164,7 +164,8 @@ exports.Prisma.SearchKeywordScalarFieldEnum = {
 };
 
 exports.Prisma.UserScalarFieldEnum = {
-  id: 'id'
+  id: 'id',
+  uuid: 'uuid'
 };
 
 exports.Prisma.UserWishScalarFieldEnum = {
@@ -207,6 +208,10 @@ exports.Prisma.MaterialOrderByRelevanceFieldEnum = {
 
 exports.Prisma.SearchKeywordOrderByRelevanceFieldEnum = {
   keyword: 'keyword'
+};
+
+exports.Prisma.UserOrderByRelevanceFieldEnum = {
+  uuid: 'uuid'
 };
 
 
