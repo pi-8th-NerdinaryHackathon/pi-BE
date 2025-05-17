@@ -158,7 +158,8 @@ exports.Prisma.ProductMaterialScalarFieldEnum = {
 };
 
 exports.Prisma.UserScalarFieldEnum = {
-  id: 'id'
+  id: 'id',
+  uuid: 'uuid'
 };
 
 exports.Prisma.UserWishScalarFieldEnum = {
@@ -197,6 +198,10 @@ exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
 
 exports.Prisma.MaterialOrderByRelevanceFieldEnum = {
   name: 'name'
+};
+
+exports.Prisma.UserOrderByRelevanceFieldEnum = {
+  uuid: 'uuid'
 };
 
 
