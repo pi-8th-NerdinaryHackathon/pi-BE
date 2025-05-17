@@ -35,7 +35,10 @@ export const addUserWish = async (data: {
         return null;
 
     const userWish = await prisma.userWish.create({
-        data 
+        data: {
+            ...data,
+            material_count: 1 // or another default value as appropriate
+        }
     });
     return userWish;
 };
