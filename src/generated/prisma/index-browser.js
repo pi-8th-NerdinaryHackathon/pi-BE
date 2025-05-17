@@ -154,7 +154,8 @@ exports.Prisma.MaterialScalarFieldEnum = {
 exports.Prisma.ProductMaterialScalarFieldEnum = {
   id: 'id',
   productId: 'productId',
-  materialId: 'materialId'
+  materialId: 'materialId',
+  maxCount: 'maxCount'
 };
 
 exports.Prisma.SearchKeywordScalarFieldEnum = {
@@ -171,7 +172,8 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.UserWishScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  productId: 'productId'
+  productId: 'productId',
+  material_count: 'material_count'
 };
 
 exports.Prisma.SortOrder = {

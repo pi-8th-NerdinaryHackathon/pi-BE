@@ -3,29 +3,48 @@ import { responseFromProducts, responseFromProduct } from "../dtos/product.dto";
 export const getProducts = async () => {
   const products = await prisma.product.findMany({
     select: {
-      id : true,
-      name : true,
-      detail : true,
-      image : true,
-      price : true,
-      company : true,
-      category : true,
+      id: true,
+      name: true,
+      detail: true,
+      image: true,
+      price: true,
+      company: true,
+      category: true,
+      ProductMaterials: {
+        select: {
+          material: {
+            select: {
+              name: true,
+            },
+          },
+        },
       },
+    },
   });
+
   return products;
 };
 
 export const getProduct = async (productId: number) => {
   const product = await prisma.product.findFirst({
     select: {
-      id : true,
-      name : true,
-      detail : true,
-      image : true,
-      price : true,
-      company : true,
-      category : true,
+      id: true,
+      name: true,
+      detail: true,
+      image: true,
+      price: true,
+      company: true,
+      category: true,
+      ProductMaterials: {
+        select: {
+          material: {
+            select: {
+              name: true,
+            },
+          },
+        },
       },
+    },
     where: {
       id: productId,
     },
@@ -36,14 +55,23 @@ export const getProduct = async (productId: number) => {
 export const getProductsFromCategory = async (categoryId: number) => {
   const products = await prisma.product.findMany({
     select: {
-      id : true,
-      name : true,
-      detail : true,
-      image : true,
-      price : true,
-      company : true,
-      category : true,
+      id: true,
+      name: true,
+      detail: true,
+      image: true,
+      price: true,
+      company: true,
+      category: true,
+      ProductMaterials: {
+        select: {
+          material: {
+            select: {
+              name: true,
+            },
+          },
+        },
       },
+    },
     where: {
       categoryId: categoryId,
     },

@@ -5651,30 +5651,35 @@ export namespace Prisma {
     id: number | null
     productId: number | null
     materialId: number | null
+    maxCount: number | null
   }
 
   export type ProductMaterialSumAggregateOutputType = {
     id: number | null
     productId: number | null
     materialId: number | null
+    maxCount: number | null
   }
 
   export type ProductMaterialMinAggregateOutputType = {
     id: number | null
     productId: number | null
     materialId: number | null
+    maxCount: number | null
   }
 
   export type ProductMaterialMaxAggregateOutputType = {
     id: number | null
     productId: number | null
     materialId: number | null
+    maxCount: number | null
   }
 
   export type ProductMaterialCountAggregateOutputType = {
     id: number
     productId: number
     materialId: number
+    maxCount: number
     _all: number
   }
 
@@ -5683,30 +5688,35 @@ export namespace Prisma {
     id?: true
     productId?: true
     materialId?: true
+    maxCount?: true
   }
 
   export type ProductMaterialSumAggregateInputType = {
     id?: true
     productId?: true
     materialId?: true
+    maxCount?: true
   }
 
   export type ProductMaterialMinAggregateInputType = {
     id?: true
     productId?: true
     materialId?: true
+    maxCount?: true
   }
 
   export type ProductMaterialMaxAggregateInputType = {
     id?: true
     productId?: true
     materialId?: true
+    maxCount?: true
   }
 
   export type ProductMaterialCountAggregateInputType = {
     id?: true
     productId?: true
     materialId?: true
+    maxCount?: true
     _all?: true
   }
 
@@ -5800,6 +5810,7 @@ export namespace Prisma {
     id: number
     productId: number
     materialId: number
+    maxCount: number
     _count: ProductMaterialCountAggregateOutputType | null
     _avg: ProductMaterialAvgAggregateOutputType | null
     _sum: ProductMaterialSumAggregateOutputType | null
@@ -5825,6 +5836,7 @@ export namespace Prisma {
     id?: boolean
     productId?: boolean
     materialId?: boolean
+    maxCount?: boolean
     product?: boolean | ProductDefaultArgs<ExtArgs>
     material?: boolean | MaterialDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["productMaterial"]>
@@ -5835,9 +5847,10 @@ export namespace Prisma {
     id?: boolean
     productId?: boolean
     materialId?: boolean
+    maxCount?: boolean
   }
 
-  export type ProductMaterialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productId" | "materialId", ExtArgs["result"]["productMaterial"]>
+  export type ProductMaterialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productId" | "materialId" | "maxCount", ExtArgs["result"]["productMaterial"]>
   export type ProductMaterialInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductDefaultArgs<ExtArgs>
     material?: boolean | MaterialDefaultArgs<ExtArgs>
@@ -5853,6 +5866,7 @@ export namespace Prisma {
       id: number
       productId: number
       materialId: number
+      maxCount: number
     }, ExtArgs["result"]["productMaterial"]>
     composites: {}
   }
@@ -6227,6 +6241,7 @@ export namespace Prisma {
     readonly id: FieldRef<"ProductMaterial", 'Int'>
     readonly productId: FieldRef<"ProductMaterial", 'Int'>
     readonly materialId: FieldRef<"ProductMaterial", 'Int'>
+    readonly maxCount: FieldRef<"ProductMaterial", 'Int'>
   }
     
 
@@ -8505,30 +8520,35 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     productId: number | null
+    material_count: number | null
   }
 
   export type UserWishSumAggregateOutputType = {
     id: number | null
     userId: number | null
     productId: number | null
+    material_count: number | null
   }
 
   export type UserWishMinAggregateOutputType = {
     id: number | null
     userId: number | null
     productId: number | null
+    material_count: number | null
   }
 
   export type UserWishMaxAggregateOutputType = {
     id: number | null
     userId: number | null
     productId: number | null
+    material_count: number | null
   }
 
   export type UserWishCountAggregateOutputType = {
     id: number
     userId: number
     productId: number
+    material_count: number
     _all: number
   }
 
@@ -8537,30 +8557,35 @@ export namespace Prisma {
     id?: true
     userId?: true
     productId?: true
+    material_count?: true
   }
 
   export type UserWishSumAggregateInputType = {
     id?: true
     userId?: true
     productId?: true
+    material_count?: true
   }
 
   export type UserWishMinAggregateInputType = {
     id?: true
     userId?: true
     productId?: true
+    material_count?: true
   }
 
   export type UserWishMaxAggregateInputType = {
     id?: true
     userId?: true
     productId?: true
+    material_count?: true
   }
 
   export type UserWishCountAggregateInputType = {
     id?: true
     userId?: true
     productId?: true
+    material_count?: true
     _all?: true
   }
 
@@ -8654,6 +8679,7 @@ export namespace Prisma {
     id: number
     userId: number
     productId: number
+    material_count: number
     _count: UserWishCountAggregateOutputType | null
     _avg: UserWishAvgAggregateOutputType | null
     _sum: UserWishSumAggregateOutputType | null
@@ -8679,6 +8705,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     productId?: boolean
+    material_count?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userWish"]>
@@ -8689,9 +8716,10 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     productId?: boolean
+    material_count?: boolean
   }
 
-  export type UserWishOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "productId", ExtArgs["result"]["userWish"]>
+  export type UserWishOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "productId" | "material_count", ExtArgs["result"]["userWish"]>
   export type UserWishInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     product?: boolean | ProductDefaultArgs<ExtArgs>
@@ -8707,6 +8735,7 @@ export namespace Prisma {
       id: number
       userId: number
       productId: number
+      material_count: number
     }, ExtArgs["result"]["userWish"]>
     composites: {}
   }
@@ -9081,6 +9110,7 @@ export namespace Prisma {
     readonly id: FieldRef<"UserWish", 'Int'>
     readonly userId: FieldRef<"UserWish", 'Int'>
     readonly productId: FieldRef<"UserWish", 'Int'>
+    readonly material_count: FieldRef<"UserWish", 'Int'>
   }
     
 
@@ -9502,7 +9532,8 @@ export namespace Prisma {
   export const ProductMaterialScalarFieldEnum: {
     id: 'id',
     productId: 'productId',
-    materialId: 'materialId'
+    materialId: 'materialId',
+    maxCount: 'maxCount'
   };
 
   export type ProductMaterialScalarFieldEnum = (typeof ProductMaterialScalarFieldEnum)[keyof typeof ProductMaterialScalarFieldEnum]
@@ -9528,7 +9559,8 @@ export namespace Prisma {
   export const UserWishScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    productId: 'productId'
+    productId: 'productId',
+    material_count: 'material_count'
   };
 
   export type UserWishScalarFieldEnum = (typeof UserWishScalarFieldEnum)[keyof typeof UserWishScalarFieldEnum]
@@ -9880,6 +9912,7 @@ export namespace Prisma {
     id?: IntFilter<"ProductMaterial"> | number
     productId?: IntFilter<"ProductMaterial"> | number
     materialId?: IntFilter<"ProductMaterial"> | number
+    maxCount?: IntFilter<"ProductMaterial"> | number
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
     material?: XOR<MaterialScalarRelationFilter, MaterialWhereInput>
   }
@@ -9888,6 +9921,7 @@ export namespace Prisma {
     id?: SortOrder
     productId?: SortOrder
     materialId?: SortOrder
+    maxCount?: SortOrder
     product?: ProductOrderByWithRelationInput
     material?: MaterialOrderByWithRelationInput
   }
@@ -9899,6 +9933,7 @@ export namespace Prisma {
     NOT?: ProductMaterialWhereInput | ProductMaterialWhereInput[]
     productId?: IntFilter<"ProductMaterial"> | number
     materialId?: IntFilter<"ProductMaterial"> | number
+    maxCount?: IntFilter<"ProductMaterial"> | number
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
     material?: XOR<MaterialScalarRelationFilter, MaterialWhereInput>
   }, "id">
@@ -9907,6 +9942,7 @@ export namespace Prisma {
     id?: SortOrder
     productId?: SortOrder
     materialId?: SortOrder
+    maxCount?: SortOrder
     _count?: ProductMaterialCountOrderByAggregateInput
     _avg?: ProductMaterialAvgOrderByAggregateInput
     _max?: ProductMaterialMaxOrderByAggregateInput
@@ -9921,6 +9957,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"ProductMaterial"> | number
     productId?: IntWithAggregatesFilter<"ProductMaterial"> | number
     materialId?: IntWithAggregatesFilter<"ProductMaterial"> | number
+    maxCount?: IntWithAggregatesFilter<"ProductMaterial"> | number
   }
 
   export type SearchKeywordWhereInput = {
@@ -10021,6 +10058,7 @@ export namespace Prisma {
     id?: IntFilter<"UserWish"> | number
     userId?: IntFilter<"UserWish"> | number
     productId?: IntFilter<"UserWish"> | number
+    material_count?: IntFilter<"UserWish"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
   }
@@ -10029,6 +10067,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     productId?: SortOrder
+    material_count?: SortOrder
     user?: UserOrderByWithRelationInput
     product?: ProductOrderByWithRelationInput
   }
@@ -10040,6 +10079,7 @@ export namespace Prisma {
     NOT?: UserWishWhereInput | UserWishWhereInput[]
     userId?: IntFilter<"UserWish"> | number
     productId?: IntFilter<"UserWish"> | number
+    material_count?: IntFilter<"UserWish"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
   }, "id">
@@ -10048,6 +10088,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     productId?: SortOrder
+    material_count?: SortOrder
     _count?: UserWishCountOrderByAggregateInput
     _avg?: UserWishAvgOrderByAggregateInput
     _max?: UserWishMaxOrderByAggregateInput
@@ -10062,6 +10103,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"UserWish"> | number
     userId?: IntWithAggregatesFilter<"UserWish"> | number
     productId?: IntWithAggregatesFilter<"UserWish"> | number
+    material_count?: IntWithAggregatesFilter<"UserWish"> | number
   }
 
   export type CompanyCreateInput = {
@@ -10292,6 +10334,7 @@ export namespace Prisma {
   }
 
   export type ProductMaterialCreateInput = {
+    maxCount: number
     product: ProductCreateNestedOneWithoutProductMaterialsInput
     material: MaterialCreateNestedOneWithoutProductMaterialsInput
   }
@@ -10300,9 +10343,11 @@ export namespace Prisma {
     id?: number
     productId: number
     materialId: number
+    maxCount: number
   }
 
   export type ProductMaterialUpdateInput = {
+    maxCount?: IntFieldUpdateOperationsInput | number
     product?: ProductUpdateOneRequiredWithoutProductMaterialsNestedInput
     material?: MaterialUpdateOneRequiredWithoutProductMaterialsNestedInput
   }
@@ -10311,22 +10356,25 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
     materialId?: IntFieldUpdateOperationsInput | number
+    maxCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductMaterialCreateManyInput = {
     id?: number
     productId: number
     materialId: number
+    maxCount: number
   }
 
   export type ProductMaterialUpdateManyMutationInput = {
-
+    maxCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductMaterialUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
     materialId?: IntFieldUpdateOperationsInput | number
+    maxCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type SearchKeywordCreateInput = {
@@ -10404,6 +10452,7 @@ export namespace Prisma {
   }
 
   export type UserWishCreateInput = {
+    material_count: number
     user: UserCreateNestedOneWithoutUserWishInput
     product: ProductCreateNestedOneWithoutUserWishInput
   }
@@ -10412,9 +10461,11 @@ export namespace Prisma {
     id?: number
     userId: number
     productId: number
+    material_count: number
   }
 
   export type UserWishUpdateInput = {
+    material_count?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutUserWishNestedInput
     product?: ProductUpdateOneRequiredWithoutUserWishNestedInput
   }
@@ -10423,22 +10474,25 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
+    material_count?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserWishCreateManyInput = {
     id?: number
     userId: number
     productId: number
+    material_count: number
   }
 
   export type UserWishUpdateManyMutationInput = {
-
+    material_count?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserWishUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
+    material_count?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -10777,30 +10831,35 @@ export namespace Prisma {
     id?: SortOrder
     productId?: SortOrder
     materialId?: SortOrder
+    maxCount?: SortOrder
   }
 
   export type ProductMaterialAvgOrderByAggregateInput = {
     id?: SortOrder
     productId?: SortOrder
     materialId?: SortOrder
+    maxCount?: SortOrder
   }
 
   export type ProductMaterialMaxOrderByAggregateInput = {
     id?: SortOrder
     productId?: SortOrder
     materialId?: SortOrder
+    maxCount?: SortOrder
   }
 
   export type ProductMaterialMinOrderByAggregateInput = {
     id?: SortOrder
     productId?: SortOrder
     materialId?: SortOrder
+    maxCount?: SortOrder
   }
 
   export type ProductMaterialSumOrderByAggregateInput = {
     id?: SortOrder
     productId?: SortOrder
     materialId?: SortOrder
+    maxCount?: SortOrder
   }
 
   export type SearchKeywordOrderByRelevanceInput = {
@@ -10875,30 +10934,35 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     productId?: SortOrder
+    material_count?: SortOrder
   }
 
   export type UserWishAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     productId?: SortOrder
+    material_count?: SortOrder
   }
 
   export type UserWishMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     productId?: SortOrder
+    material_count?: SortOrder
   }
 
   export type UserWishMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     productId?: SortOrder
+    material_count?: SortOrder
   }
 
   export type UserWishSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     productId?: SortOrder
+    material_count?: SortOrder
   }
 
   export type ProductCreateNestedManyWithoutCompanyInput = {
@@ -11554,12 +11618,14 @@ export namespace Prisma {
   }
 
   export type ProductMaterialCreateWithoutProductInput = {
+    maxCount: number
     material: MaterialCreateNestedOneWithoutProductMaterialsInput
   }
 
   export type ProductMaterialUncheckedCreateWithoutProductInput = {
     id?: number
     materialId: number
+    maxCount: number
   }
 
   export type ProductMaterialCreateOrConnectWithoutProductInput = {
@@ -11573,12 +11639,14 @@ export namespace Prisma {
   }
 
   export type UserWishCreateWithoutProductInput = {
+    material_count: number
     user: UserCreateNestedOneWithoutUserWishInput
   }
 
   export type UserWishUncheckedCreateWithoutProductInput = {
     id?: number
     userId: number
+    material_count: number
   }
 
   export type UserWishCreateOrConnectWithoutProductInput = {
@@ -11662,6 +11730,7 @@ export namespace Prisma {
     id?: IntFilter<"ProductMaterial"> | number
     productId?: IntFilter<"ProductMaterial"> | number
     materialId?: IntFilter<"ProductMaterial"> | number
+    maxCount?: IntFilter<"ProductMaterial"> | number
   }
 
   export type UserWishUpsertWithWhereUniqueWithoutProductInput = {
@@ -11687,6 +11756,7 @@ export namespace Prisma {
     id?: IntFilter<"UserWish"> | number
     userId?: IntFilter<"UserWish"> | number
     productId?: IntFilter<"UserWish"> | number
+    material_count?: IntFilter<"UserWish"> | number
   }
 
   export type ProductCreateWithoutCategoryInput = {
@@ -11741,12 +11811,14 @@ export namespace Prisma {
   }
 
   export type ProductMaterialCreateWithoutMaterialInput = {
+    maxCount: number
     product: ProductCreateNestedOneWithoutProductMaterialsInput
   }
 
   export type ProductMaterialUncheckedCreateWithoutMaterialInput = {
     id?: number
     productId: number
+    maxCount: number
   }
 
   export type ProductMaterialCreateOrConnectWithoutMaterialInput = {
@@ -11962,12 +12034,14 @@ export namespace Prisma {
   }
 
   export type UserWishCreateWithoutUserInput = {
+    material_count: number
     product: ProductCreateNestedOneWithoutUserWishInput
   }
 
   export type UserWishUncheckedCreateWithoutUserInput = {
     id?: number
     productId: number
+    material_count: number
   }
 
   export type UserWishCreateOrConnectWithoutUserInput = {
@@ -12146,39 +12220,47 @@ export namespace Prisma {
   export type ProductMaterialCreateManyProductInput = {
     id?: number
     materialId: number
+    maxCount: number
   }
 
   export type UserWishCreateManyProductInput = {
     id?: number
     userId: number
+    material_count: number
   }
 
   export type ProductMaterialUpdateWithoutProductInput = {
+    maxCount?: IntFieldUpdateOperationsInput | number
     material?: MaterialUpdateOneRequiredWithoutProductMaterialsNestedInput
   }
 
   export type ProductMaterialUncheckedUpdateWithoutProductInput = {
     id?: IntFieldUpdateOperationsInput | number
     materialId?: IntFieldUpdateOperationsInput | number
+    maxCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductMaterialUncheckedUpdateManyWithoutProductInput = {
     id?: IntFieldUpdateOperationsInput | number
     materialId?: IntFieldUpdateOperationsInput | number
+    maxCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserWishUpdateWithoutProductInput = {
+    material_count?: IntFieldUpdateOperationsInput | number
     user?: UserUpdateOneRequiredWithoutUserWishNestedInput
   }
 
   export type UserWishUncheckedUpdateWithoutProductInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    material_count?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserWishUncheckedUpdateManyWithoutProductInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    material_count?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductCreateManyCategoryInput = {
@@ -12231,6 +12313,7 @@ export namespace Prisma {
   export type ProductMaterialCreateManyMaterialInput = {
     id?: number
     productId: number
+    maxCount: number
   }
 
   export type SearchKeywordCreateManyMaterialInput = {
@@ -12239,17 +12322,20 @@ export namespace Prisma {
   }
 
   export type ProductMaterialUpdateWithoutMaterialInput = {
+    maxCount?: IntFieldUpdateOperationsInput | number
     product?: ProductUpdateOneRequiredWithoutProductMaterialsNestedInput
   }
 
   export type ProductMaterialUncheckedUpdateWithoutMaterialInput = {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
+    maxCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductMaterialUncheckedUpdateManyWithoutMaterialInput = {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
+    maxCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type SearchKeywordUpdateWithoutMaterialInput = {
@@ -12269,20 +12355,24 @@ export namespace Prisma {
   export type UserWishCreateManyUserInput = {
     id?: number
     productId: number
+    material_count: number
   }
 
   export type UserWishUpdateWithoutUserInput = {
+    material_count?: IntFieldUpdateOperationsInput | number
     product?: ProductUpdateOneRequiredWithoutUserWishNestedInput
   }
 
   export type UserWishUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
+    material_count?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserWishUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
+    material_count?: IntFieldUpdateOperationsInput | number
   }
 
 
