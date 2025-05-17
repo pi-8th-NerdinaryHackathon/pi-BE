@@ -14,7 +14,7 @@ export class DetectController {
 
   private initializeRoutes() {
     this.router.post("/image-search", this.detectImage.bind(this));
-    this.router.get("/search", this.handleSearchProduct.bind(this))
+    this.router.get("/", this.handleSearchProduct.bind(this))
   }
 
   /**
@@ -74,7 +74,7 @@ export class DetectController {
 
   /**
    * @swagger
-   * /api/products/search:
+   * /api/search:
    *   get:
    *     summary: 검색어 기반 제품 검색
    *     description: 검색어에서 재료와 매핑하여 해당 재료를 사용하는 제품을 검색합니다.
