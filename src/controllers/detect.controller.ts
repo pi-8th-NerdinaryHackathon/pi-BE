@@ -1,6 +1,9 @@
 import { Router, Request, Response, NextFunction } from "express";
 import { DetectService } from "../services/detect.service";
-import { ImageDetectRequestDto } from "../dtos/detect.dto";
+import multer from "multer";
+import { uploadToS3 } from "../utils/s3Uploader";
+
+const upload = multer({ storage: multer.memoryStorage() });
 
 export class DetectController {
   public router: Router;
@@ -13,7 +16,11 @@ export class DetectController {
   }
 
   private initializeRoutes() {
-    this.router.post("/image-search", this.detectImage.bind(this));
+    this.router.post(
+      "/image-search",
+      upload.single("image"),
+      this.detectImage.bind(this)
+    );
   }
 
   /**
@@ -27,13 +34,13 @@ export class DetectController {
    *     requestBody:
    *       required: true
    *       content:
-   *         application/json:
+   *         multipart/form-data:
    *           schema:
    *             type: object
    *             properties:
-   *               imageUrl:
+   *               image:
    *                 type: string
-   *                 example: "https://example.com/image.jpg"
+   *                 format: binary
    *     responses:
    *       200:
    *         description: 제품 검색 결과
@@ -49,7 +56,7 @@ export class DetectController {
    *                   items:
    *                     type: object
    *       400:
-   *         description: 잘못된 요청 (imageUrl 누락)
+   *         description: 잘못된 요청 (파일 누락)
    */
   private async detectImage(
     req: Request,
@@ -57,13 +64,16 @@ export class DetectController {
     next: NextFunction
   ): Promise<void> {
     try {
-      const { imageUrl }: ImageDetectRequestDto = req.body;
-
-      if (!imageUrl) {
-        res.status(400).json({ message: "imageUrl이 필요합니다." });
+      const file = req.file;
+      if (!file) {
+        res.status(400).json({ message: "image 파일이 필요합니다." });
         return;
       }
 
+      // S3에 이미지 업로드 후 URL 반환
+      const imageUrl = await uploadToS3(file);
+
+      // S3 URL 기반 분석
       const result = await this.detectService.processImage(imageUrl);
       res.status(200).json(result);
     } catch (err) {
