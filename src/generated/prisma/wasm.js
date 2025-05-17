@@ -157,6 +157,16 @@ exports.Prisma.ProductMaterialScalarFieldEnum = {
   materialId: 'materialId'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id'
+};
+
+exports.Prisma.UserWishScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  productId: 'productId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -195,7 +205,9 @@ exports.Prisma.ModelName = {
   Product: 'Product',
   Category: 'Category',
   Material: 'Material',
-  ProductMaterial: 'ProductMaterial'
+  ProductMaterial: 'ProductMaterial',
+  User: 'User',
+  UserWish: 'UserWish'
 };
 
 /**
