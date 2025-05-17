@@ -208,7 +208,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/yeeun/pi-BE/src/generated/prisma",
+      "value": "D:\\git\\cteam\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -217,12 +217,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/yeeun/pi-BE/prisma/schema.prisma",
+    "sourceFilePath": "D:\\git\\cteam\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
