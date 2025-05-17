@@ -1,3 +1,3 @@
-export const sayHello = () => {
+export const sayHello = async() => {
   return "Hello from pi-BE 👋";
 };
