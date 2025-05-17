@@ -10,5 +10,9 @@ export const swaggerOptions = {
       url: "http://localhost:3000",
       description: "로컬 서버",
     },
+    {
+      url: "http://43.203.85.72:3000",
+      description: "퍼블릭 서버", // ← 퍼블릭 IP 서버 추가
+    },
   ],
 };
