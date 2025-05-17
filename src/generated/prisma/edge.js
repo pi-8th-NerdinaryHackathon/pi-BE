@@ -210,7 +210,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\git\\cteam\\src\\generated\\prisma",
+      "value": "/Users/mijin/Desktop/pi-BE/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -219,12 +219,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\git\\cteam\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/mijin/Desktop/pi-BE/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -238,7 +238,6 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
