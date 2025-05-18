@@ -115,11 +115,19 @@ userRouter.get("/wishlist", async (req: Request, res: Response) => {
         throw new HttpException(401, "uuid가 없습니다.");
     }
     const uuid = userIdHeader;
+    let user;
     try {
-        const user = await listUserWish(uuid);
+        user = await listUserWish(uuid);
+        if (user.error == true) {
+            throw new Error();
+        }
         res.status(200).json(user);
     } catch (error) {
-        throw new HttpException(500, "서버 오류입니다.");
+        if (user.error != true) {
+            throw new HttpException(500, "서버 오류입니다.");
+        } else {
+            throw new HttpException(403, "uuid가 저장되있지 않습니다.");
+        }
     }
 });
 
@@ -219,11 +227,19 @@ userRouter.post("/wishlist", async (req: Request, res: Response) => {
         throw new HttpException(401, "uuid가 없습니다");
     }
     const uuid = userIdHeader;
+    let user;
     try {
-      const user = await addingUserWish(uuid, req.body.productId);
+        user = await addingUserWish(uuid, req.body.productId);
+        if (user.error == true) {
+            throw new Error();
+        }
       res.status(200).json(user);
     } catch (error) {
-        throw new HttpException(500, "서버 오류입니다.");
+        if (user.error != true) {
+            throw new HttpException(500, "서버 오류입니다.");
+        } else {
+            throw new HttpException(403, "uuid가 저장되있지 않습니다.");
+        }
     }
 });
   
@@ -324,11 +340,19 @@ userRouter.delete("/wishlist", async (req: Request, res: Response) => {
         throw new HttpException(401, "uuid가 없습니다.");
     }
     const uuid = userIdHeader;
+    let user;
     try {
-      const user = await delUserWish(uuid);
+        user = await delUserWish(uuid);
+        if (user.error == true) {
+            throw new Error();
+        }
       res.status(200).json(user);
     } catch (error) {
-        throw new HttpException(500, "서버 오류입니다.");
+        if (user.error != true) {
+            throw new HttpException(500, "서버 오류입니다.");
+        } else {
+            throw new HttpException(403, "uuid가 저장되있지 않습니다.");
+        }
     }
 });
   
@@ -401,10 +425,11 @@ userRouter.post("/", async (req: Request, res: Response) => {
  *                   example: 서버 오류입니다.
  */
 
-    try {
+    
         if (!req.body.uuid) {
             throw new HttpException(401, "uuid가 없습니다.");
-        }
+    }
+    try {
         const user = await addingUser(req.body.uuid);
         res.status(200).json(user);
     } catch (error) {

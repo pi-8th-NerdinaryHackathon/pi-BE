@@ -13,9 +13,9 @@ import {
  } from "../dtos/user.dto";
 import HttpException from "../errors/HttpException";
 export const listUserWish = async (uuid: string) => {
-    const user = await getUser(uuid);
+    const user = await getUser(uuid) || undefined;
     if (!user) {
-        throw new HttpException(403, "유저가 없습니다.");
+        return {error: true}
     }
     // product 에러
     const wish = await getWishFromUserId(user.id);
@@ -28,7 +28,7 @@ export const listUserWish = async (uuid: string) => {
 export const addingUserWish = async (uuid: string, productId: number) => {
     const user = await getUser(uuid);
     if (!user) {
-        throw new HttpException(403, "유저가 없습니다.");
+        return {error: true}
     }
     const data = {
         userId: user.id,
@@ -45,7 +45,7 @@ export const addingUserWish = async (uuid: string, productId: number) => {
 export const delUserWish = async (uuid: string) => {
     const user = await getUser(uuid);
     if (!user) {
-        throw new HttpException(403, "유저가 없습니다.");
+        return {error: true}
     }
     const userWish = await getUserWishFormUserId(user.id)
     if (!userWish) {

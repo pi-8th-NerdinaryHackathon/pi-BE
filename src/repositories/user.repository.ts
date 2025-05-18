@@ -5,7 +5,7 @@ export const getUser = async (uuid: string) => {
         where: {
             uuid: uuid
         }
-    })
+    }) || undefined
     return user;
 }
 
