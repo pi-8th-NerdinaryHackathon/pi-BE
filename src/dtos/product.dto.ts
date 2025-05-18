@@ -7,16 +7,16 @@ export const responseFromProducts = (products: any[]) => {
         image: product.image,
         price: product.price,
         company: {
-          id: product.id,
-          name: product.name,
-          number: product.number,
-          address: product.address,
-          adressSpec: product.adressSpec,
-          detail: product.detail
+          id: product.company.id,
+          name: product.company.name,
+          number: product.company.number,
+          address: product.company.address,
+          adressSpec: product.company.adressSpec,
+          detail: product.company.detail
         },
         category: {
-          id: product.id,
-          name: product.name
+          id: product.category.id,
+          name: product.category.name
         },
         material: products[0].ProductMaterials[0].material.name
       }
@@ -32,16 +32,16 @@ export const responseFromProduct = (product: any) => {
       image: product.image,
       price: product.price,
       company: {
-        id: product.id,
-        name: product.name,
-        number: product.number,
-        address: product.address,
-        adressSpec: product.adressSpec,
-        detail: product.detail
+        id: product.company.id,
+        name: product.company.name,
+        number: product.company.number,
+        address: product.company.address,
+        adressSpec: product.company.adressSpec,
+        detail: product.company.detail
       },
       category: {
-        id: product.id,
-        name: product.name
+        id: product.category.id,
+        name: product.category.name
       },
       material: product.ProductMaterials[0].material.name
     }
